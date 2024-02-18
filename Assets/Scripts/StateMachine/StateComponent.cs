@@ -7,7 +7,7 @@ public class StateComponent : MonoBehaviour
     //Base Class
 
     public StateMachine StateMachine;
-    public ActorData Actor;
+    public PlayerData Actor;
 
     virtual public void Enter(string msg = "")
     {

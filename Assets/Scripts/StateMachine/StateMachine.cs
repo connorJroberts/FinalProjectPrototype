@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class StateMachine : MonoBehaviour
 {
-    [SerializeField] public ActorData actorData;
+    [SerializeField] public PlayerData actorData;
     [SerializeField] private string _initialState;
     private StateComponent _currentState;
 

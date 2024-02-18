@@ -19,8 +19,7 @@ public class PlayerData : ActorData
     [SerializeField] private float _slideDistance = 5f;
     [SerializeField] private float _slideTime = 0.5f;
 
-    [SerializeField] private float _minJumpHeight = 0.5f;
-    [SerializeField] private float _maxJumpHeight = 1.5f;
+    [SerializeField] private float _jumpHeight = 1.5f;
     [SerializeField] private float _wallJumpHeight = 1.0f;
     [SerializeField] private float _jumpTime = 0.5f;
     [SerializeField] private int _jumpCount = 2;
@@ -33,6 +32,7 @@ public class PlayerData : ActorData
 
     [SerializeField] private float _momentumFalloffTime = 0.3f;
     [SerializeField] private float _airResistance = 0.1f;
+    [SerializeField, Range(0, 1)] private float _airControlFactor = 0.3f;
 
     [SerializeField] private float _maxFuel = 100f;
     [SerializeField] private float _fuelConsumptionRate = 0.1f;
@@ -56,8 +56,7 @@ public class PlayerData : ActorData
     public float SlideDistance => _slideDistance;
     public float SlideTime => _slideTime;
 
-    public float MinJumpHeight => _minJumpHeight;
-    public float MaxJumpHeight => _maxJumpHeight;
+    public float JumpHeight => _jumpHeight;
     public float WallJumpHeight => _wallJumpHeight;
     public float JumpTime => _jumpTime;
     public int JumpCount => _jumpCount;
@@ -70,6 +69,7 @@ public class PlayerData : ActorData
 
     public float MomentumFalloffTime => _momentumFalloffTime;
     public float AirResistance => _airResistance;
+    public float AirControlFactor => _airControlFactor;
  
     public float MaxFuel => _maxFuel;
     public float FuelConsumptionRate => _fuelConsumptionRate;
@@ -77,4 +77,13 @@ public class PlayerData : ActorData
     public float SprintFuelConsumption => _sprintFuelConsumptionAmount;
  
     public float MouseSensitivity => _mouseSensitivity;
+
+    //Non Persistent Fields
+
+    public Vector3 Velocity = Vector3.zero;
+    public float Gravity => -(4 * _jumpHeight / Mathf.Pow(_jumpTime, 2));
+    public float JumpVelocity => (4 * _jumpHeight / _jumpTime);
+
+
+
 }

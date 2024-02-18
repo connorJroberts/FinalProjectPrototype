@@ -2,17 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Jump : MonoBehaviour
+public class Jump : StateComponent
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void Enter(string msg = "")
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Actor.Velocity = new Vector3(Actor.Velocity.x, Actor.JumpVelocity, Actor.Velocity.z);
+        Actor.Controller.Move(Actor.Velocity);
+        StateMachine.TransitionTo("Air"); 
+
     }
 }
