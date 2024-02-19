@@ -7,8 +7,10 @@ public class Idle : StateComponent
 
     public override void Enter(string msg = "")
     {
-        
+
         //TODO: Global Broadcast Player.Idle
+        Actor.CurrentJumpCount = Actor.JumpCount;
+        Actor.CurrentFuel = Actor.MaxFuel;
 
     }
 
@@ -16,6 +18,10 @@ public class Idle : StateComponent
     {
 
         Actor.Velocity = Vector3.Lerp(Actor.Velocity, Vector3.zero, Actor.MomentumFalloffTime * Time.fixedDeltaTime); // Lerps Actor velocity to 0 via Mopmentum Falloff
+
+        //Handle Fuel
+        Actor.CurrentFuel += Actor.FuelRegenerationAmount * Actor.FuelRegenerationRate * Time.fixedDeltaTime;
+        Actor.CurrentFuel = Mathf.Clamp(Actor.CurrentFuel, 0, Actor.MaxFuel);
 
     }
 

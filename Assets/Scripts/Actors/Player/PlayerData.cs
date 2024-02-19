@@ -32,12 +32,14 @@ public class PlayerData : ActorData
 
     [SerializeField] private float _momentumFalloffTime = 0.3f;
     [SerializeField] private float _airResistance = 0.1f;
-    [SerializeField, Range(0, 1)] private float _airControlFactor = 0.3f;
+    [SerializeField, Range(0f, 1f)] private float _airControlFactor = 0.3f;
 
     [SerializeField] private float _maxFuel = 100f;
     [SerializeField] private float _fuelConsumptionRate = 0.1f;
+    [SerializeField] private float _fuelRegenerationRate = 0.1f;
     [SerializeField] private float _jetpackFuelConsumptionAmount = 5f;
     [SerializeField] private float _sprintFuelConsumptionAmount = 5f;
+    [SerializeField] private float _fuelRegenerationAmount = 3f;
 
     [SerializeField] private float _mouseSensitivity = 0.1f;
 
@@ -65,7 +67,7 @@ public class PlayerData : ActorData
     public JumpCurves JumpCurves => _jumpCurves;
 
     public float CoyoteTime => _coyoteTime;
-    public float JumpBufffer => _jumpBuffer;
+    public float JumpBuffer => _jumpBuffer;
 
     public float MomentumFalloffTime => _momentumFalloffTime;
     public float AirResistance => _airResistance;
@@ -73,16 +75,20 @@ public class PlayerData : ActorData
  
     public float MaxFuel => _maxFuel;
     public float FuelConsumptionRate => _fuelConsumptionRate;
+    public float FuelRegenerationRate => _fuelRegenerationRate;
     public float JetpackFuelConsumption => _jetpackFuelConsumptionAmount;
     public float SprintFuelConsumption => _sprintFuelConsumptionAmount;
+    public float FuelRegenerationAmount => _fuelRegenerationAmount;
  
     public float MouseSensitivity => _mouseSensitivity;
 
     //Non Persistent Fields
 
     public Vector3 Velocity = Vector3.zero;
-    public float Gravity => -(4 * _jumpHeight / Mathf.Pow(_jumpTime, 2));
+    public float Gravity => -(8  * _jumpHeight / Mathf.Pow(_jumpTime, 2));
     public float JumpVelocity => (4 * _jumpHeight / _jumpTime);
+    public float CurrentJumpCount = 0;
+    public float CurrentFuel = 0;
 
 
 

@@ -6,8 +6,8 @@ public class StateComponent : MonoBehaviour
 {
     //Base Class
 
-    public StateMachine StateMachine;
-    public PlayerData Actor;
+    [SerializeField, ReadOnly] public StateMachine StateMachine;
+    [SerializeField, ReadOnly] public PlayerData Actor;
 
     virtual public void Enter(string msg = "")
     {

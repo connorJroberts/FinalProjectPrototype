@@ -6,8 +6,8 @@ using UnityEngine;
 
 public class StateMachine : MonoBehaviour
 {
-    [SerializeField] public PlayerData actorData;
-    [SerializeField] private string _initialState;
+    [SerializeField, ReadOnly] public PlayerData actorData;
+    [SerializeField, ReadOnly] private string _initialState;
     private StateComponent _currentState;
 
     private Dictionary<string, StateComponent> _states = new Dictionary<string, StateComponent>();
