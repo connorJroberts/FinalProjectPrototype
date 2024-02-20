@@ -7,6 +7,11 @@ public class PlayerCameraRotation : MonoBehaviour
 
     [SerializeField] private PlayerData _playerData;
 
+    private void Start()
+    {
+        Cursor.visible = false;
+    }
+
     void Update()
     {
         transform.Rotate(Vector3.right, -Input.GetAxisRaw("Mouse Y") * _playerData.MouseSensitivity);

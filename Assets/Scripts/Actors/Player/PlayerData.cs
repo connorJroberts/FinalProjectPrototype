@@ -13,6 +13,7 @@ public class PlayerData : ActorData
     [SerializeField] private float _runSpeed = 3f;
     [SerializeField] private float _sprintSpeed = 4f;
     [SerializeField] private float _wallRunSpeed = 3f;
+    [SerializeField] private float _wallRunFalloffRate = 0.3f;
 
     [SerializeField] private float _stateTransitionTime = 0.3f;
 
@@ -21,6 +22,7 @@ public class PlayerData : ActorData
 
     [SerializeField] private float _jumpHeight = 1.5f;
     [SerializeField] private float _wallJumpHeight = 1.0f;
+    [SerializeField] private float _wallJumpHorizontalForce = 6f;
     [SerializeField] private float _jumpTime = 0.5f;
     [SerializeField] private int _jumpCount = 2;
 
@@ -52,6 +54,7 @@ public class PlayerData : ActorData
     public float RunSpeed => _runSpeed;
     public float SprintSpeed => _sprintSpeed;
     public float WallRunSpeed => _wallRunSpeed;
+    public float WallRunFalloffRate => _wallRunFalloffRate;
 
     public float StateTransitionTime => _stateTransitionTime;
 
@@ -60,6 +63,7 @@ public class PlayerData : ActorData
 
     public float JumpHeight => _jumpHeight;
     public float WallJumpHeight => _wallJumpHeight;
+    public float WallJumpHorizontalForce => _wallJumpHorizontalForce;
     public float JumpTime => _jumpTime;
     public int JumpCount => _jumpCount;
 
@@ -89,7 +93,12 @@ public class PlayerData : ActorData
     public float JumpVelocity => (4 * _jumpHeight / _jumpTime);
     public float CurrentJumpCount = 0;
     public float CurrentFuel = 0;
+    public ControllerColliderHit Collision { get; private set; }
 
 
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        Collision = hit;
+    }
 
 }

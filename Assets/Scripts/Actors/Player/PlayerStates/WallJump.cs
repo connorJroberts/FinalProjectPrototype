@@ -2,17 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WallJump : MonoBehaviour
+public class WallJump : StateComponent
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void Enter(string msg = "")
     {
-        
-    }
+        Actor.Velocity = Actor.Collision.normal * Actor.WallJumpHorizontalForce * Time.fixedDeltaTime + Actor.transform.forward * Actor.WallRunSpeed * Time.fixedDeltaTime; 
+        Actor.Velocity.y = Actor.WallJumpHeight * Time.fixedDeltaTime;
+        Actor.Controller.Move(Actor.Velocity);
+        StateMachine.TransitionTo("Air");
 
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
