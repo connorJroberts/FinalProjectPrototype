@@ -26,6 +26,7 @@ public class Run : StateComponent
         else if (Input.GetButtonDown("Jump")) StateMachine.TransitionTo("Jump");
         else if (Input.GetAxisRaw("Vertical") != 1) StateMachine.TransitionTo("Walk");
         else if (Input.GetButton("Sprint") && Actor.CurrentFuel > 0) StateMachine.TransitionTo("Sprint");
+        else if (!Actor.Controller.isGrounded) StateMachine.TransitionTo("Air");
 
     }
 }

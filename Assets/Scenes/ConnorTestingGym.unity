@@ -4457,10 +4457,10 @@ MonoBehaviour:
   _stateTransitionTime: 0.3
   _slideDistance: 5
   _slideTime: 0.5
-  _jumpHeight: 2.5
-  _wallJumpHeight: 15
+  _jumpHeight: 5
+  _wallJumpHeight: 20
   _wallJumpHorizontalForce: 12
-  _jumpTime: 0.5
+  _jumpTime: 0.75
   _jumpCount: 2
   _jumpCurveRate: 1.5
   _jumpCurves: 0

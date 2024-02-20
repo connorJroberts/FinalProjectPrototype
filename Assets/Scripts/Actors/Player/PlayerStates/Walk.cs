@@ -25,6 +25,7 @@ public class Walk : StateComponent
         if (Actor.Velocity == Vector3.zero) StateMachine.TransitionTo("Idle");
         else if (Input.GetButtonDown("Jump")) StateMachine.TransitionTo("Jump");
         else if (Input.GetAxisRaw("Vertical") == 1) StateMachine.TransitionTo("Run");
+        else if (!Actor.Controller.isGrounded) StateMachine.TransitionTo("Air");
 
     }
 

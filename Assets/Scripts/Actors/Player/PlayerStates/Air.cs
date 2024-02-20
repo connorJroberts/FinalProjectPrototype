@@ -30,7 +30,7 @@ public class Air : StateComponent
 
     public override void Process()
     {
-        if (Actor.Controller.collisionFlags == CollisionFlags.Sides) StateMachine.TransitionTo("WallRun");
+        if (Actor.Controller.collisionFlags == CollisionFlags.Sides && Input.GetAxisRaw("Vertical") == 1) StateMachine.TransitionTo("WallRun");
         else if (Input.GetButtonDown("Jump") && (Actor.CurrentJumpCount > 0)) StateMachine.TransitionTo("Jump");
         else if (Input.GetButtonDown("Jump")) _jumpBuffer = Actor.JumpBuffer;
         else if (Actor.Controller.isGrounded)

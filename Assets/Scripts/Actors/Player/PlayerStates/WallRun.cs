@@ -40,6 +40,7 @@ public class WallRun : StateComponent
         else transitionTimer = 1f;
 
         if (Input.GetButtonDown("Jump")) StateMachine.TransitionTo("WallJump");
+        else if (Input.GetAxisRaw("Vertical") != 1) StateMachine.TransitionTo("Air");
     }
 
 }
