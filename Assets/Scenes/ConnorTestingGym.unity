@@ -4452,8 +4452,8 @@ MonoBehaviour:
   _walkSpeed: 3
   _runSpeed: 10
   _sprintSpeed: 18
-  _wallRunSpeed: 18
-  _wallRunFalloffRate: 0.3
+  _wallRunSpeed: 24
+  _wallRunFalloffRate: 0.02
   _stateTransitionTime: 0.3
   _slideDistance: 5
   _slideTime: 0.5
