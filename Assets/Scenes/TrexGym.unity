@@ -2550,7 +2550,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c22777d6e868e4f2fb421913386b154e, type: 2}
+  - {fileID: 2100000, guid: ac808c3886d876345a0c7003ad55e409, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4238,8 +4238,8 @@ Transform:
   m_GameObject: {fileID: 650521622}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.6011543, y: -0.9999008, z: 4.540223}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -54.5, y: -12.015, z: -126.3}
+  m_LocalScale: {x: 1, y: 5.227332, z: 19.567}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -4453,8 +4453,11 @@ MonoBehaviour:
   _runSpeed: 10
   _sprintSpeed: 18
   _wallRunSpeed: 24
-  _wallRunFalloffRate: 0.02
-  _stateTransitionTime: 0.3
+  _veritcalWallRunSpeed: 6
+  _wallRunFalloffRate: 0
+  _verticalWallRunInitiationAngle: 15
+  _verticalWallRunFalloffRate: 0
+  _verticalWallRunForwardSpeedMultiplier: 0.5
   _slideDistance: 5
   _slideTime: 0.5
   _jumpHeight: 5
@@ -4475,7 +4478,7 @@ MonoBehaviour:
   _jetpackFuelConsumptionAmount: 5
   _sprintFuelConsumptionAmount: 5
   _fuelRegenerationAmount: 3
-  _mouseSensitivity: 5
+  _mouseSensitivity: 10
   Velocity: {x: 0, y: 0, z: 0}
   CurrentJumpCount: 0
   CurrentFuel: 0
@@ -4867,7 +4870,7 @@ Transform:
   m_GameObject: {fileID: 1849331474}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.824, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
