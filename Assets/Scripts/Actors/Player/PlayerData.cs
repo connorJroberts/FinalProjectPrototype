@@ -8,34 +8,42 @@ public class PlayerData : ActorData
 
     [SerializeField] private CharacterController controller;
 
+    [Header("Move Speeds")]
     [SerializeField] private float _crouchSpeed = 1.0f;
     [SerializeField] private float _walkSpeed = 2f;
     [SerializeField] private float _runSpeed = 3f;
     [SerializeField] private float _sprintSpeed = 4f;
     [SerializeField] private float _wallRunSpeed = 3f;
+
+    [Header("Wall Run")]
     [SerializeField] private float _wallRunFalloffRate = 0.3f;
+    [SerializeField] private float _verticalWallRunInitiationAngle = 15f;
 
-    [SerializeField] private float _stateTransitionTime = 0.3f;
-
+    [Header("Slide")]
     [SerializeField] private float _slideDistance = 5f;
     [SerializeField] private float _slideTime = 0.5f;
 
+    [Header("Jump")]
     [SerializeField] private float _jumpHeight = 1.5f;
     [SerializeField] private float _wallJumpHeight = 1.0f;
     [SerializeField] private float _wallJumpHorizontalForce = 6f;
     [SerializeField] private float _jumpTime = 0.5f;
     [SerializeField] private int _jumpCount = 2;
 
+    [Header("Jump Curve")]
     [SerializeField] private float _jumpCurveRate = 1.5f;
     [SerializeField] private JumpCurves _jumpCurves;
 
+    [Header("Affordance")]
     [SerializeField] private float _coyoteTime = 0.1f;
     [SerializeField] private float _jumpBuffer = 0.1f;
 
+    [Header("Momentum")]
     [SerializeField] private float _momentumFalloffTime = 0.3f;
     [SerializeField] private float _airResistance = 0.1f;
     [SerializeField, Range(0f, 1f)] private float _airControlFactor = 0.3f;
 
+    [Header("Fuel")]
     [SerializeField] private float _maxFuel = 100f;
     [SerializeField] private float _fuelConsumptionRate = 0.1f;
     [SerializeField] private float _fuelRegenerationRate = 0.1f;
@@ -43,6 +51,7 @@ public class PlayerData : ActorData
     [SerializeField] private float _sprintFuelConsumptionAmount = 5f;
     [SerializeField] private float _fuelRegenerationAmount = 3f;
 
+    [Header("Options")] //TODO: Move to optionsdata in future
     [SerializeField] private float _mouseSensitivity = 0.1f;
 
     //Public References for Backend
@@ -55,8 +64,7 @@ public class PlayerData : ActorData
     public float SprintSpeed => _sprintSpeed;
     public float WallRunSpeed => _wallRunSpeed;
     public float WallRunFalloffRate => _wallRunFalloffRate;
-
-    public float StateTransitionTime => _stateTransitionTime;
+    public float VerticalWallRunInitiationAngle => _verticalWallRunInitiationAngle;
 
     public float SlideDistance => _slideDistance;
     public float SlideTime => _slideTime;
