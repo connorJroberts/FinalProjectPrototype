@@ -29,7 +29,7 @@ public class WallRun : StateComponent
         //check if - or + with regard to wall normal + set wallRunDirection
         wallRunDirection = wallRunAngle * Actor.Collision.normal;
 
-        Actor.Velocity = wallRunDirection.normalized * Actor.WallRunSpeed * Time.fixedDeltaTime;
+        Actor.Velocity = wallRunDirection.normalized * Actor.WallRunSpeed * Time.fixedDeltaTime + -Actor.Collision.normal * Time.fixedDeltaTime * 10;
         Actor.Velocity.y += Actor.VerticalWallRunFalloffRate * Actor.Gravity * Time.fixedDeltaTime * Time.fixedDeltaTime;
         Actor.Controller.Move(Actor.Velocity);
 
@@ -40,7 +40,11 @@ public class WallRun : StateComponent
         if (Actor.Controller.collisionFlags == CollisionFlags.None)
         {
             transitionTimer -= Time.fixedDeltaTime;
-            if (transitionTimer < 0.0f) StateMachine.TransitionTo("Air");
+            if (transitionTimer < 0.0f)
+            {
+                StateMachine.TransitionTo("Air");
+                Actor.Velocity = wallRunDirection.normalized * Actor.WallRunSpeed * Time.fixedDeltaTime;
+            }
         }
         else transitionTimer = 1f;
 
