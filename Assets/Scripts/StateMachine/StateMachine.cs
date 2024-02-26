@@ -17,7 +17,6 @@ public class StateMachine : MonoBehaviour
         StateComponent[] stateComponents = GetComponents<StateComponent>(); //Pass data into initial state
         foreach (StateComponent component in stateComponents)
         {
-            Debug.Log(component.GetType().Name);
             _states.Add(component.GetType().Name, component);
         }
 

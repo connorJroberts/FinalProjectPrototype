@@ -2,17 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class VerticalWallRun : MonoBehaviour
+public class VerticalWallRun : StateComponent
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void Enter(string msg = "")
     {
-        
+        Actor.Velocity = new Vector3(0f, Actor.VerticalWallRunSpeed, 0f) * Time.fixedDeltaTime;
     }
 
-    // Update is called once per frame
-    void Update()
+
+    public override void FixedProcess()
     {
-        
+        Actor.Velocity = Actor.transform.forward * Actor.RunSpeed * Actor.VerticalWallRunForwardSpeedMulitplier * Time.fixedDeltaTime + new Vector3(0, Actor.Velocity.y, 0);
+        Actor.Velocity.y += Actor.VerticalWallRunFalloffRate * Actor.Gravity * Time.fixedDeltaTime;
+
+
+
+        Actor.Controller.Move(Actor.Velocity);
+    }
+
+    public override void Process()
+    {
+        if (Actor.Velocity.y < 0f) StateMachine.TransitionTo("Air", "WallRunComplete");
     }
 }
