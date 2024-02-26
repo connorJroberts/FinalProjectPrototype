@@ -1302,7 +1302,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3205290350101592376, guid: 454818d1b1c35c94384c4c5dc763d8e7, type: 3}
       propertyPath: _jumpHeight
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3205290350101592376, guid: 454818d1b1c35c94384c4c5dc763d8e7, type: 3}
       propertyPath: _sprintSpeed
@@ -1313,6 +1313,10 @@ PrefabInstance:
       value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 3205290350101592376, guid: 454818d1b1c35c94384c4c5dc763d8e7, type: 3}
+      propertyPath: _wallJumpHeight
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3205290350101592376, guid: 454818d1b1c35c94384c4c5dc763d8e7, type: 3}
       propertyPath: _wallRunFalloffRate
       value: 0.005
       objectReference: {fileID: 0}
@@ -1321,8 +1325,16 @@ PrefabInstance:
       value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 3205290350101592376, guid: 454818d1b1c35c94384c4c5dc763d8e7, type: 3}
+      propertyPath: _verticalWallClimbHeight
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3205290350101592376, guid: 454818d1b1c35c94384c4c5dc763d8e7, type: 3}
       propertyPath: _verticalWallRunFalloffRate
       value: 0.005
+      objectReference: {fileID: 0}
+    - target: {fileID: 3205290350101592376, guid: 454818d1b1c35c94384c4c5dc763d8e7, type: 3}
+      propertyPath: _verticalWallClimbFalloffRate
+      value: 1.25
       objectReference: {fileID: 0}
     - target: {fileID: 3205290350101592376, guid: 454818d1b1c35c94384c4c5dc763d8e7, type: 3}
       propertyPath: _verticalWallRunInitiationAngle

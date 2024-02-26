@@ -6,14 +6,14 @@ public class VerticalWallRun : StateComponent
 {
     public override void Enter(string msg = "")
     {
-        Actor.Velocity = new Vector3(0f, Actor.VerticalWallRunSpeed, 0f) * Time.fixedDeltaTime;
+        Actor.Velocity = new Vector3(0f, Actor.VerticalWallRunVelocity, 0f) * Time.fixedDeltaTime;
     }
 
 
     public override void FixedProcess()
     {
         Actor.Velocity = Actor.transform.forward * Actor.RunSpeed * Actor.VerticalWallRunForwardSpeedMulitplier * Time.fixedDeltaTime + new Vector3(0, Actor.Velocity.y, 0);
-        Actor.Velocity.y += Actor.VerticalWallRunFalloffRate * Actor.Gravity * Time.fixedDeltaTime;
+        Actor.Velocity.y += Actor.VerticalWallRunFalloffRate * Actor.Gravity * Time.fixedDeltaTime * Time.fixedDeltaTime;
 
 
 

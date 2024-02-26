@@ -30,7 +30,7 @@ public class WallRun : StateComponent
         wallRunDirection = wallRunAngle * Actor.Collision.normal;
 
         Actor.Velocity = wallRunDirection.normalized * Actor.WallRunSpeed * Time.fixedDeltaTime;
-        Actor.Velocity.y += Actor.WallRunFalloffRate * Actor.Gravity * Time.fixedDeltaTime;
+        Actor.Velocity.y += Actor.VerticalWallRunFalloffRate * Actor.Gravity * Time.fixedDeltaTime * Time.fixedDeltaTime;
         Actor.Controller.Move(Actor.Velocity);
 
     }
