@@ -7,11 +7,17 @@ using UnityEngine;
 public class Air : StateComponent
 {
 
+    private bool _wallRunComplete = false;
+
     private float _jumpBuffer = 0;
 
     public override void Enter(string msg = "")
     {
         _jumpBuffer = 0;
+
+        if (msg == "WallRunComplete") _wallRunComplete = true;
+        else _wallRunComplete = false;
+
     }
 
     public override void FixedProcess()
@@ -30,7 +36,8 @@ public class Air : StateComponent
 
     public override void Process()
     {
-        if (Actor.Controller.collisionFlags == CollisionFlags.Sides && Input.GetAxisRaw("Vertical") == 1) StateMachine.TransitionTo("WallRun");
+        if (Actor.Controller.collisionFlags == CollisionFlags.Sides && Input.GetAxisRaw("Vertical") == 1 && !_wallRunComplete)
+            StateMachine.TransitionTo("WallRun");
         else if (Input.GetButtonDown("Jump") && (Actor.CurrentJumpCount > 0)) StateMachine.TransitionTo("Jump");
         else if (Input.GetButtonDown("Jump")) _jumpBuffer = Actor.JumpBuffer;
         else if (Actor.Controller.isGrounded)

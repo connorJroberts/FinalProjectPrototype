@@ -14,10 +14,13 @@ public class PlayerData : ActorData
     [SerializeField] private float _runSpeed = 3f;
     [SerializeField] private float _sprintSpeed = 4f;
     [SerializeField] private float _wallRunSpeed = 3f;
+    [SerializeField] private float _veritcalWallRunSpeed = 6f;
 
     [Header("Wall Run")]
     [SerializeField] private float _wallRunFalloffRate = 0.3f;
     [SerializeField] private float _verticalWallRunInitiationAngle = 15f;
+    [SerializeField] private float _verticalWallRunFalloffRate = 0.08f;
+    [SerializeField] private float _verticalWallRunForwardSpeedMultiplier = 0.5f;
 
     [Header("Slide")]
     [SerializeField] private float _slideDistance = 5f;
@@ -63,8 +66,12 @@ public class PlayerData : ActorData
     public float RunSpeed => _runSpeed;
     public float SprintSpeed => _sprintSpeed;
     public float WallRunSpeed => _wallRunSpeed;
+    public float VerticalWallRunSpeed => _veritcalWallRunSpeed;
+
     public float WallRunFalloffRate => _wallRunFalloffRate;
     public float VerticalWallRunInitiationAngle => _verticalWallRunInitiationAngle;
+    public float VerticalWallRunFalloffRate => _verticalWallRunFalloffRate;
+    public float VerticalWallRunForwardSpeedMulitplier => _verticalWallRunForwardSpeedMultiplier;
 
     public float SlideDistance => _slideDistance;
     public float SlideTime => _slideTime;
@@ -95,6 +102,7 @@ public class PlayerData : ActorData
     public float MouseSensitivity => _mouseSensitivity;
 
     //Non Persistent Fields
+    //TODO: Move to Player Controller Script
 
     public Vector3 Velocity = Vector3.zero;
     public float Gravity => -(8  * _jumpHeight / Mathf.Pow(_jumpTime, 2));
