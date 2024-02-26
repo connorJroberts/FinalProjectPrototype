@@ -16,6 +16,7 @@ public class WallRun : StateComponent
         Vector3 resultant = (Actor.Collision.normal + facing);
 
         if (Vector3.Angle(resultant, Quaternion.AngleAxis(90, Vector3.up) * Actor.Collision.normal) <= 90) wallRunAngle = Quaternion.AngleAxis(92, Vector3.up);
+       // else if (Mathf.Abs(Vector3.Angle(resultant, Quaternion.AngleAxis(90, Vector3.up) * Actor.Collision.normal)) <= Actor.)
         else wallRunAngle = Quaternion.AngleAxis(-92, Vector3.up);
     }
 
