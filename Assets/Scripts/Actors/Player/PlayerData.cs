@@ -14,13 +14,13 @@ public class PlayerData : ActorData
     [SerializeField] private float _runSpeed = 3f;
     [SerializeField] private float _sprintSpeed = 4f;
     [SerializeField] private float _wallRunSpeed = 3f;
-    [SerializeField] private float _veritcalWallRunSpeed = 6f;
 
     [Header("Wall Run")]
-    [SerializeField] private float _wallRunFalloffRate = 0.3f;
-    [SerializeField] private float _verticalWallRunInitiationAngle = 15f;
-    [SerializeField] private float _verticalWallRunFalloffRate = 0.08f;
-    [SerializeField] private float _verticalWallRunForwardSpeedMultiplier = 0.5f;
+    [SerializeField] private float _horizontalWallRunFalloffRate = 0.3f;
+    [SerializeField] private float _verticalWallClimbInitiationAngle = 15f;
+    [SerializeField] private float _verticalWallClimbFalloffRate = 0.08f;
+    [SerializeField] private float _verticalWallClimbForwardSpeedMultiplier = 0.5f;
+    [SerializeField] private float _verticalWallClimbHeight = 6f;
 
     [Header("Slide")]
     [SerializeField] private float _slideDistance = 5f;
@@ -30,8 +30,8 @@ public class PlayerData : ActorData
     [SerializeField] private float _jumpHeight = 1.5f;
     [SerializeField] private float _wallJumpHeight = 1.0f;
     [SerializeField] private float _wallJumpHorizontalForce = 6f;
-    [SerializeField] private float _jumpTime = 0.5f;
     [SerializeField] private int _jumpCount = 2;
+    [SerializeField] private float _gravity = -10f;
 
     [Header("Jump Curve")]
     [SerializeField] private float _jumpCurveRate = 1.5f;
@@ -66,12 +66,12 @@ public class PlayerData : ActorData
     public float RunSpeed => _runSpeed;
     public float SprintSpeed => _sprintSpeed;
     public float WallRunSpeed => _wallRunSpeed;
-    public float VerticalWallRunSpeed => _veritcalWallRunSpeed;
 
-    public float WallRunFalloffRate => _wallRunFalloffRate;
-    public float VerticalWallRunInitiationAngle => _verticalWallRunInitiationAngle;
-    public float VerticalWallRunFalloffRate => _verticalWallRunFalloffRate;
-    public float VerticalWallRunForwardSpeedMulitplier => _verticalWallRunForwardSpeedMultiplier;
+    public float HorizontalWallRunFalloffRate => _horizontalWallRunFalloffRate;
+    public float VerticalWallRunInitiationAngle => _verticalWallClimbInitiationAngle;
+    public float VerticalWallRunFalloffRate => _verticalWallClimbFalloffRate;
+    public float VerticalWallRunForwardSpeedMulitplier => _verticalWallClimbForwardSpeedMultiplier;
+    public float VerticalWallRunHeight => _verticalWallClimbHeight;
 
     public float SlideDistance => _slideDistance;
     public float SlideTime => _slideTime;
@@ -79,8 +79,8 @@ public class PlayerData : ActorData
     public float JumpHeight => _jumpHeight;
     public float WallJumpHeight => _wallJumpHeight;
     public float WallJumpHorizontalForce => _wallJumpHorizontalForce;
-    public float JumpTime => _jumpTime;
     public int JumpCount => _jumpCount;
+    public float Gravity => _gravity;
 
     public float JumpCurveRate => _jumpCurveRate;
     public JumpCurves JumpCurves => _jumpCurves;
@@ -105,8 +105,9 @@ public class PlayerData : ActorData
     //TODO: Move to Player Controller Script
 
     public Vector3 Velocity = Vector3.zero;
-    public float Gravity => -(8  * _jumpHeight / Mathf.Pow(_jumpTime, 2));
-    public float JumpVelocity => (4 * _jumpHeight / _jumpTime);
+    public float JumpVelocity => Mathf.Sqrt(2f * -_gravity * _jumpHeight);
+    public float WallJumpVelocity => Mathf.Sqrt(2f * -_gravity * _wallJumpHeight);
+    public float VerticalWallRunVelocity => Mathf.Sqrt(2f * -(_gravity * _verticalWallClimbFalloffRate) * _verticalWallClimbHeight);
     public float CurrentJumpCount = 0;
     public float CurrentFuel = 0;
     public ControllerColliderHit Collision { get; private set; }
