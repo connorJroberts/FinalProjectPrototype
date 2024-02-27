@@ -6,7 +6,9 @@ public class Jump : StateComponent
 {
     public override void Enter(string msg = "")
     {
-        Vector3 jumpDirection = new Vector3(Actor.Velocity.x, 0, Actor.Velocity.z).magnitude * Actor.transform.forward;
+        var input = Quaternion.LookRotation(Actor.transform.forward, Vector3.up) * new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized ;
+
+        Vector3 jumpDirection = new Vector3(Actor.Velocity.x, 0, Actor.Velocity.z).magnitude * input;
 
 
         Actor.CurrentJumpCount -= 1;

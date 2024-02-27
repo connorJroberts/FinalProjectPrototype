@@ -37,6 +37,9 @@ public class WallRun : StateComponent
 
     public override void Process()
     {
+
+        Actor.transform.rotation = Quaternion.LookRotation(Actor.transform.forward, Vector3.up);
+
         if (Actor.Controller.collisionFlags == CollisionFlags.None)
         {
             transitionTimer -= Time.fixedDeltaTime;

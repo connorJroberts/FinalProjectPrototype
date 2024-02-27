@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerRotation : MonoBehaviour
 {
     [SerializeField, ReadOnly] private PlayerData _playerData;
-
+   
     private void OnValidate()
     {
         TryGetComponent<PlayerData>(out _playerData);
@@ -13,6 +13,6 @@ public class PlayerRotation : MonoBehaviour
 
     void Update()
     {
-        transform.Rotate(transform.up, Input.GetAxisRaw("Mouse X") * _playerData.MouseSensitivity);
+        transform.rotation *= Quaternion.AngleAxis(Input.GetAxisRaw("Mouse X") * _playerData.MouseSensitivity, transform.up);
     }
 }
