@@ -6,6 +6,7 @@ public class WallRun : StateComponent
 {
     private Quaternion wallRunAngle;
     private Vector3 wallRunDirection;
+    private Vector3 verticalCrossVector;
     private float transitionTimer = 1.0f;
 
     public override void Enter(string msg = "")
@@ -15,8 +16,16 @@ public class WallRun : StateComponent
         Vector3 facing = Actor.transform.forward;
         Vector3 resultant = (Actor.Collision.normal + facing);
 
-        if (Vector3.Angle(resultant, Quaternion.AngleAxis(90, Vector3.up) * Actor.Collision.normal) <= 90) wallRunAngle = Quaternion.AngleAxis(92, Vector3.up);
-        else wallRunAngle = Quaternion.AngleAxis(-92, Vector3.up);
+        if (Vector3.Angle(resultant, Quaternion.AngleAxis(90, Vector3.up) * Actor.Collision.normal) <= 90)
+        {
+            wallRunAngle = Quaternion.AngleAxis(92, Vector3.up);
+            verticalCrossVector = Vector3.up;
+        }
+        else
+        {
+            wallRunAngle = Quaternion.AngleAxis(-92, Vector3.up);
+            verticalCrossVector = Vector3.down;
+        }
         
         if (Vector3.Angle(facing, -Actor.Collision.normal) <= Actor.VerticalWallRunInitiationAngle) StateMachine.TransitionTo("VerticalWallRun");
         else if (Vector3.Angle(facing, -Actor.Collision.normal) >= 360f - Actor.VerticalWallRunInitiationAngle) StateMachine.TransitionTo("VerticalWallRun");
@@ -25,7 +34,6 @@ public class WallRun : StateComponent
 
     public override void FixedProcess()
     {
-
         //check if - or + with regard to wall normal + set wallRunDirection
         wallRunDirection = wallRunAngle * Actor.Collision.normal;
 
@@ -37,8 +45,7 @@ public class WallRun : StateComponent
 
     public override void Process()
     {
-
-        Actor.transform.rotation = Quaternion.LookRotation(Actor.transform.forward, Vector3.up);
+        HandleRotation();
 
         if (Actor.Controller.collisionFlags == CollisionFlags.None)
         {
@@ -55,5 +62,20 @@ public class WallRun : StateComponent
         else if (Input.GetAxisRaw("Vertical") != 1) StateMachine.TransitionTo("Air");
         else if (Actor.Controller.isGrounded) StateMachine.TransitionTo("Idle");
     }
+
+    private void HandleRotation()
+    {
+        Quaternion targetRotation = Quaternion.LookRotation(new Vector3(Actor.Velocity.x, 0, Actor.Velocity.z).normalized + 0.5f * Actor.Collision.normal, Vector3.up);
+
+        float cameraAngle = Vector3.SignedAngle(Actor.Collision.normal, Actor.transform.forward, verticalCrossVector);
+        print(cameraAngle);
+        if (cameraAngle <= 90 && cameraAngle >= 0) 
+        {
+            targetRotation = Quaternion.LookRotation(Actor.transform.forward, Vector3.up);
+        }
+
+        Actor.transform.rotation = Quaternion.Slerp(Actor.transform.rotation, targetRotation, 5 * Time.deltaTime);
+    }
+
 
 }

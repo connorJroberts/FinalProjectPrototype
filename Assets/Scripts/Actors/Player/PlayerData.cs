@@ -7,6 +7,7 @@ public class PlayerData : ActorData
     //Private Fields for Designer
 
     [SerializeField] private CharacterController controller;
+    [SerializeField] private PlayerCameraRotation rotation;
 
     [Header("Move Speeds")]
     [SerializeField] private float _crouchSpeed = 1.0f;
@@ -60,6 +61,7 @@ public class PlayerData : ActorData
     //Public References for Backend
 
     public CharacterController Controller => controller;
+    public PlayerCameraRotation CameraRotation => rotation;
 
     public float CrouchSpeed => _crouchSpeed;
     public float WalkSpeed => _walkSpeed;
