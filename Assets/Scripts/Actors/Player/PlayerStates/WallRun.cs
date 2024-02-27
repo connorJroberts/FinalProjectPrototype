@@ -68,7 +68,6 @@ public class WallRun : StateComponent
         Quaternion targetRotation = Quaternion.LookRotation(new Vector3(Actor.Velocity.x, 0, Actor.Velocity.z).normalized + 0.5f * Actor.Collision.normal, Vector3.up);
 
         float cameraAngle = Vector3.SignedAngle(Actor.Collision.normal, Actor.transform.forward, verticalCrossVector);
-        print(cameraAngle);
         if (cameraAngle <= 90 && cameraAngle >= 0) 
         {
             targetRotation = Quaternion.LookRotation(Actor.transform.forward, Vector3.up);

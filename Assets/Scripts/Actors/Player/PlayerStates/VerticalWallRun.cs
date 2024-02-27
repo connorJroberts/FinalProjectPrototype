@@ -15,8 +15,6 @@ public class VerticalWallRun : StateComponent
         Actor.Velocity = Actor.transform.forward * Actor.RunSpeed * Actor.VerticalWallRunForwardSpeedMulitplier * Time.fixedDeltaTime + new Vector3(0, Actor.Velocity.y, 0);
         Actor.Velocity.y += Actor.VerticalWallRunFalloffRate * Actor.Gravity * Time.fixedDeltaTime * Time.fixedDeltaTime;
 
-
-
         Actor.Controller.Move(Actor.Velocity);
     }
 

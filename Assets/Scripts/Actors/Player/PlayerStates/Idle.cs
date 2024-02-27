@@ -30,6 +30,6 @@ public class Idle : StateComponent
 
         if (Input.GetAxisRaw("Vertical") != 0 || Input.GetAxisRaw("Horizontal") != 0) StateMachine.TransitionTo("Walk");
         else if (Input.GetButtonDown("Jump")) StateMachine.TransitionTo("Jump");
-        //else if (!Actor.Controller.isGrounded) StateMachine.TransitionTo("Air");
+        else if (!Actor.Controller.isGrounded) StateMachine.TransitionTo("Air");
     }
 }
