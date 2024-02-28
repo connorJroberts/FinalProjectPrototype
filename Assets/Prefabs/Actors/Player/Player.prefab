@@ -398,10 +398,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotation: {fileID: 5801755582042569016}
   _crouchSpeed: 1
-  _walkSpeed: 3
+  _walkSpeed: 10
   _runSpeed: 10
   _sprintSpeed: 18
-  _wallRunSpeed: 18
+  _wallRunSpeed: 10
   _horizontalWallRunFalloffRate: 0
   _verticalWallClimbInitiationAngle: 15
   _verticalWallClimbFalloffRate: 1.25
@@ -409,7 +409,7 @@ MonoBehaviour:
   _verticalWallClimbHeight: 4
   _dashDistance: 5
   _slideBuffer: 0.2
-  _jumpHeight: 2
+  _jumpHeight: 2.2
   _wallJumpHeight: 3
   _wallJumpHorizontalForce: 12
   _jumpCount: 2
@@ -428,6 +428,7 @@ MonoBehaviour:
   _sprintFuelConsumptionAmount: 5
   _fuelRegenerationAmount: 3
   _mouseSensitivity: 5
+  _defaultCameraHeight: 1.4
 --- !u!114 &7621393422480515380
 MonoBehaviour:
   m_ObjectHideFlags: 0
