@@ -59,6 +59,7 @@ public class PlayerData : ActorData
 
     [Header("Options")] //TODO: Move to optionsdata in future
     [SerializeField] private float _mouseSensitivity = 0.1f;
+    [SerializeField] private float _defaultCameraHeight = 2f;
 
     //Public References for Backend
 
@@ -103,5 +104,6 @@ public class PlayerData : ActorData
  
     //TODO: Move to Settings Data
     public float MouseSensitivity => _mouseSensitivity;
+    public float DefaultCameraHeight => _defaultCameraHeight;
 
 }
