@@ -40,7 +40,7 @@ public class Crouch : StateComponent
 
     public override void Exit()
     {
-        PlayerData.CameraRotation.gameObject.transform.localPosition = new Vector3(0, 2, 0);
+        PlayerData.CameraRotation.gameObject.transform.localPosition = new Vector3(0, PlayerData.DefaultCameraHeight, 0);
     }
 
 }
