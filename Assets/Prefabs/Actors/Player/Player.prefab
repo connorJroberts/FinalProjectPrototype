@@ -406,7 +406,7 @@ MonoBehaviour:
   _verticalWallClimbInitiationAngle: 15
   _verticalWallClimbFalloffRate: 1.25
   _verticalWallClimbForwardSpeedMultiplier: 0.5
-  _verticalWallClimbHeight: 4
+  _verticalWallClimbHeight: 1
   _dashDistance: 5
   _slideBuffer: 0.2
   _jumpHeight: 2.2
