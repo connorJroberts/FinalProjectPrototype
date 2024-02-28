@@ -26,6 +26,10 @@ public class Sprint : StateComponent
         else if (Input.GetButton("Crouch")) StateMachine.TransitionTo("Slide");
         else if (Input.GetAxisRaw("Vertical") != 1) StateMachine.TransitionTo("Walk");
         else if (Player.CurrentFuel <= 0 || !Input.GetButton("Sprint")) StateMachine.TransitionTo("Run");
-        else if (!Player.Controller.isGrounded) StateMachine.TransitionTo("Air");
+        else if (!Player.Controller.isGrounded)
+        {
+            StateMachine.TransitionTo("Air");
+            Player.Velocity.y = 0;
+        }
     }
 }

@@ -26,7 +26,11 @@ public class Walk : StateComponent
         else if (Input.GetButtonDown("Jump")) StateMachine.TransitionTo("Jump");
         else if (Input.GetAxisRaw("Vertical") == 1) StateMachine.TransitionTo("Run");
         else if (Input.GetButtonDown("Crouch")) StateMachine.TransitionTo("Crouch");
-        else if (!Player.Controller.isGrounded) StateMachine.TransitionTo("Air");
+        else if (!Player.Controller.isGrounded)
+        {
+            StateMachine.TransitionTo("Air");
+            Player.Velocity.y = 0;
+        }
 
     }
 
