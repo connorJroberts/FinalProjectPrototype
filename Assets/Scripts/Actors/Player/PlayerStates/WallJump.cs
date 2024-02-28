@@ -6,9 +6,9 @@ public class WallJump : StateComponent
 {
     public override void Enter(string msg = "")
     {
-        Actor.Velocity = Actor.Collision.normal * Actor.WallJumpHorizontalForce * Time.fixedDeltaTime + Actor.transform.forward * Actor.WallRunSpeed * Time.fixedDeltaTime; 
-        Actor.Velocity.y = Actor.WallJumpVelocity * Time.fixedDeltaTime;
-        Actor.Controller.Move(Actor.Velocity);
+        Player.Velocity = Player.Collision.normal * PlayerData.WallJumpHorizontalForce * Time.fixedDeltaTime + PlayerData.transform.forward * PlayerData.WallRunSpeed * Time.fixedDeltaTime;
+        Player.Velocity.y = Player.WallJumpVelocity * Time.fixedDeltaTime;
+        Player.Controller.Move(Player.Velocity);
         StateMachine.TransitionTo("Air");
 
     }

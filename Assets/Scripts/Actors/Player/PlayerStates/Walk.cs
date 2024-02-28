@@ -8,24 +8,25 @@ public class Walk : StateComponent
 
     public override void FixedProcess()
     {
-        
-        Actor.Velocity = Vector3.Lerp(Actor.Velocity, hMove * Actor.WalkSpeed * Time.fixedDeltaTime, Time.fixedDeltaTime / Actor.MomentumFalloffTime);
-        Actor.Controller.Move(Actor.Velocity);
+
+        Player.Velocity = Vector3.Lerp(Player.Velocity, hMove * PlayerData.WalkSpeed * Time.fixedDeltaTime, Time.fixedDeltaTime / PlayerData.MomentumFalloffTime) + new Vector3(0, -0.1f, 0);
+        Player.Controller.Move(Player.Velocity);
 
         //Handle Fuel
-        Actor.CurrentFuel += Actor.FuelRegenerationAmount * Actor.FuelRegenerationRate * Time.fixedDeltaTime;
-        Actor.CurrentFuel = Mathf.Clamp(Actor.CurrentFuel, 0, Actor.MaxFuel);
+        Player.CurrentFuel += PlayerData.FuelRegenerationAmount * PlayerData.FuelRegenerationRate * Time.fixedDeltaTime;
+        Player.CurrentFuel = Mathf.Clamp(Player.CurrentFuel, 0, PlayerData.MaxFuel);
 
     }
 
     public override void Process()
     {
-        hMove = Quaternion.LookRotation(Actor.transform.forward, Vector3.up) * new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
+        hMove = Quaternion.LookRotation(PlayerData.transform.forward, Vector3.up) * new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
 
-        if (Actor.Velocity == Vector3.zero) StateMachine.TransitionTo("Idle");
+        if (Player.Velocity == Vector3.zero) StateMachine.TransitionTo("Idle");
         else if (Input.GetButtonDown("Jump")) StateMachine.TransitionTo("Jump");
         else if (Input.GetAxisRaw("Vertical") == 1) StateMachine.TransitionTo("Run");
-        else if (!Actor.Controller.isGrounded) StateMachine.TransitionTo("Air");
+        else if (Input.GetButtonDown("Crouch")) StateMachine.TransitionTo("Crouch");
+        else if (!Player.Controller.isGrounded) StateMachine.TransitionTo("Air");
 
     }
 

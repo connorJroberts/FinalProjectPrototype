@@ -6,8 +6,16 @@ public class StateComponent : MonoBehaviour
 {
     //Base Class
 
-    [SerializeField, ReadOnly] public StateMachine StateMachine;
-    [SerializeField, ReadOnly] public PlayerData Actor;
+    [SerializeField, ReadOnly] protected StateMachine StateMachine;
+    [SerializeField, ReadOnly] protected PlayerData PlayerData;
+    [SerializeField, ReadOnly] protected PlayerController Player;
+
+    public void ConfigureState(StateMachine stateMachine, PlayerData playerData, PlayerController player)
+    {
+        StateMachine = stateMachine;
+        PlayerData = playerData;
+        Player = player;
+    }
 
     virtual public void Enter(string msg = "")
     {

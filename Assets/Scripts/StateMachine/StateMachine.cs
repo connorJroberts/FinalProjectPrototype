@@ -6,8 +6,9 @@ using UnityEngine;
 
 public class StateMachine : MonoBehaviour
 {
-    [SerializeField, ReadOnly] public PlayerData actorData;
-    [SerializeField, ReadOnly] private string _initialState;
+    [SerializeField] private PlayerData playerData;
+    [SerializeField] private PlayerController player;
+    [SerializeField] private string _initialState;
     private StateComponent _currentState;
 
     private Dictionary<string, StateComponent> _states = new Dictionary<string, StateComponent>();
@@ -17,6 +18,7 @@ public class StateMachine : MonoBehaviour
         StateComponent[] stateComponents = GetComponents<StateComponent>(); //Pass data into initial state
         foreach (StateComponent component in stateComponents)
         {
+            if (_states.ContainsValue(component)) continue;
             _states.Add(component.GetType().Name, component);
         }
 
@@ -51,7 +53,6 @@ public class StateMachine : MonoBehaviour
     private void SetupState(string stateName) //Pass Data into State
     {
         _currentState = _states[stateName];
-        _currentState.StateMachine = this;
-        _currentState.Actor = actorData;
+        _currentState.ConfigureState(this, playerData, player);
     }
 }

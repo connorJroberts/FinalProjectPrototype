@@ -9,19 +9,19 @@ public class Idle : StateComponent
     {
 
         //TODO: Global Broadcast Player.Idle
-        Actor.CurrentJumpCount = Actor.JumpCount;
-        Actor.CurrentFuel = Actor.MaxFuel;
+        Player.CurrentJumpCount = PlayerData.JumpCount;
+        Player.CurrentFuel = PlayerData.MaxFuel;
 
     }
 
     override public void FixedProcess()
     {
 
-        Actor.Velocity = Vector3.Lerp(Actor.Velocity, Vector3.zero, Actor.MomentumFalloffTime * Time.fixedDeltaTime); // Lerps Actor velocity to 0 via Mopmentum Falloff
+        Player.Velocity = Vector3.Lerp(Player.Velocity, Vector3.zero, PlayerData.MomentumFalloffTime * Time.fixedDeltaTime); // Lerps Actor velocity to 0 via Mopmentum Falloff
 
         //Handle Fuel
-        Actor.CurrentFuel += Actor.FuelRegenerationAmount * Actor.FuelRegenerationRate * Time.fixedDeltaTime;
-        Actor.CurrentFuel = Mathf.Clamp(Actor.CurrentFuel, 0, Actor.MaxFuel);
+        Player.CurrentFuel += PlayerData.FuelRegenerationAmount * PlayerData.FuelRegenerationRate * Time.fixedDeltaTime;
+        Player.CurrentFuel = Mathf.Clamp(Player.CurrentFuel, 0, PlayerData.MaxFuel);
 
     }
 
@@ -30,6 +30,7 @@ public class Idle : StateComponent
 
         if (Input.GetAxisRaw("Vertical") != 0 || Input.GetAxisRaw("Horizontal") != 0) StateMachine.TransitionTo("Walk");
         else if (Input.GetButtonDown("Jump")) StateMachine.TransitionTo("Jump");
-        //else if (!Actor.Controller.isGrounded) StateMachine.TransitionTo("Air");
+        else if (!Player.Controller.isGrounded) StateMachine.TransitionTo("Air");
+        else if (Input.GetButtonDown("Crouch")) StateMachine.TransitionTo("Crouch");
     }
 }
