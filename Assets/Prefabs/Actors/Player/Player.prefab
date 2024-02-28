@@ -124,6 +124,7 @@ GameObject:
   - component: {fileID: 1725215018012908789}
   - component: {fileID: 2773408537715397650}
   - component: {fileID: 7885765434625578765}
+  - component: {fileID: 2592705113052307553}
   - component: {fileID: 1682626206144104995}
   - component: {fileID: 678016353993208663}
   - component: {fileID: 4843312090822919800}
@@ -161,7 +162,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bda9a539e246004fad04fd4e70b8ffa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actorData: {fileID: 3205290350101592376}
+  playerData: {fileID: 3205290350101592376}
+  player: {fileID: 8179168282084677362}
   _initialState: Idle
 --- !u!114 &8424097892945273827
 MonoBehaviour:
@@ -176,7 +178,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StateMachine: {fileID: 2563843305727690390}
-  Actor: {fileID: 3205290350101592376}
+  PlayerData: {fileID: 3205290350101592376}
+  Player: {fileID: 8179168282084677362}
 --- !u!114 &1856127799652967166
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,6 +192,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66e477a354010cb46ab59241b157a508, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StateMachine: {fileID: 0}
+  PlayerData: {fileID: 0}
+  Player: {fileID: 0}
 --- !u!114 &8905331980908670315
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,7 +208,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StateMachine: {fileID: 0}
-  Actor: {fileID: 0}
+  PlayerData: {fileID: 0}
+  Player: {fileID: 0}
 --- !u!114 &1974340700122138856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -216,7 +223,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StateMachine: {fileID: 0}
-  Actor: {fileID: 0}
+  PlayerData: {fileID: 0}
+  Player: {fileID: 0}
 --- !u!114 &5476109644484933460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -230,7 +238,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StateMachine: {fileID: 0}
-  Actor: {fileID: 0}
+  PlayerData: {fileID: 0}
+  Player: {fileID: 0}
 --- !u!114 &1725215018012908789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -243,6 +252,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c99dc2b56a6d2bf41897b5246bb8dce0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StateMachine: {fileID: 0}
+  PlayerData: {fileID: 0}
+  Player: {fileID: 0}
 --- !u!114 &2773408537715397650
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -256,7 +268,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StateMachine: {fileID: 0}
-  Actor: {fileID: 0}
+  PlayerData: {fileID: 0}
+  Player: {fileID: 0}
 --- !u!114 &7885765434625578765
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -270,7 +283,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StateMachine: {fileID: 0}
-  Actor: {fileID: 0}
+  PlayerData: {fileID: 0}
+  Player: {fileID: 0}
+--- !u!114 &2592705113052307553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4407984627426780191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e85893f1539e6a44d86cc5019cb80cea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StateMachine: {fileID: 0}
+  PlayerData: {fileID: 0}
+  Player: {fileID: 0}
 --- !u!114 &1682626206144104995
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -283,6 +312,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5f74f3e28fc6084db053cf35a297fb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StateMachine: {fileID: 0}
+  PlayerData: {fileID: 0}
+  Player: {fileID: 0}
 --- !u!114 &678016353993208663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -296,7 +328,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StateMachine: {fileID: 0}
-  Actor: {fileID: 0}
+  PlayerData: {fileID: 0}
+  Player: {fileID: 0}
 --- !u!114 &4843312090822919800
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -310,7 +343,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StateMachine: {fileID: 0}
-  Actor: {fileID: 0}
+  PlayerData: {fileID: 0}
+  Player: {fileID: 0}
 --- !u!1 &7355671032158614644
 GameObject:
   m_ObjectHideFlags: 0
@@ -324,6 +358,7 @@ GameObject:
   - component: {fileID: 7621393422480515380}
   - component: {fileID: 8010583704515668107}
   - component: {fileID: 4305324408748407167}
+  - component: {fileID: 8179168282084677362}
   - component: {fileID: 1126209350573050912}
   m_Layer: 0
   m_Name: Player
@@ -361,21 +396,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 156b88668ed52694badfee10dcd9173c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 1126209350573050912}
+  rotation: {fileID: 5801755582042569016}
   _crouchSpeed: 1
   _walkSpeed: 3
   _runSpeed: 10
   _sprintSpeed: 18
   _wallRunSpeed: 18
-  _wallRunFalloffRate: 0.3
-  _stateTransitionTime: 0.3
-  _slideDistance: 5
-  _slideTime: 0.5
-  _jumpHeight: 2.5
-  _wallJumpHeight: 15
+  _horizontalWallRunFalloffRate: 0
+  _verticalWallClimbInitiationAngle: 15
+  _verticalWallClimbFalloffRate: 1.25
+  _verticalWallClimbForwardSpeedMultiplier: 0.5
+  _verticalWallClimbHeight: 4
+  _dashDistance: 5
+  _slideBuffer: 0.2
+  _jumpHeight: 2
+  _wallJumpHeight: 3
   _wallJumpHorizontalForce: 12
-  _jumpTime: 0.5
   _jumpCount: 2
+  _gravity: -10
   _jumpCurveRate: 1.5
   _jumpCurves: 0
   _coyoteTime: 0.1
@@ -386,13 +424,10 @@ MonoBehaviour:
   _maxFuel: 100
   _fuelConsumptionRate: 0.1
   _fuelRegenerationRate: 0.1
-  _jetpackFuelConsumptionAmount: 5
+  _dashFuelConsumptionAmount: 5
   _sprintFuelConsumptionAmount: 5
   _fuelRegenerationAmount: 3
   _mouseSensitivity: 5
-  Velocity: {x: 0, y: 0, z: 0}
-  CurrentJumpCount: 0
-  CurrentFuel: 0
 --- !u!114 &7621393422480515380
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -456,6 +491,23 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &8179168282084677362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7355671032158614644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99808afa2fef56e42a3abdba5a034fbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerData: {fileID: 3205290350101592376}
+  _controller: {fileID: 1126209350573050912}
+  Velocity: {x: 0, y: 0, z: 0}
+  CurrentJumpCount: 0
+  CurrentFuel: 0
 --- !u!143 &1126209350573050912
 CharacterController:
   m_ObjectHideFlags: 0
@@ -477,8 +529,8 @@ CharacterController:
   serializedVersion: 3
   m_Height: 2
   m_Radius: 0.5
-  m_SlopeLimit: 45
+  m_SlopeLimit: 180
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 1, z: 0}
