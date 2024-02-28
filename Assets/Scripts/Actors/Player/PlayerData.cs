@@ -6,7 +6,6 @@ public class PlayerData : ActorData
 {
     //Private Fields for Designer
 
-    [SerializeField] private CharacterController controller;
     [SerializeField] private PlayerCameraRotation rotation;
 
     [Header("Move Speeds")]
@@ -23,9 +22,12 @@ public class PlayerData : ActorData
     [SerializeField] private float _verticalWallClimbForwardSpeedMultiplier = 0.5f;
     [SerializeField] private float _verticalWallClimbHeight = 6f;
 
+    [Header("Dash")]
+    [SerializeField] private float _dashDistance = 5f;
+
+
     [Header("Slide")]
-    [SerializeField] private float _slideDistance = 5f;
-    [SerializeField] private float _slideTime = 0.5f;
+    [SerializeField] private float _slideBuffer = 0.2f;
 
     [Header("Jump")]
     [SerializeField] private float _jumpHeight = 1.5f;
@@ -51,7 +53,7 @@ public class PlayerData : ActorData
     [SerializeField] private float _maxFuel = 100f;
     [SerializeField] private float _fuelConsumptionRate = 0.1f;
     [SerializeField] private float _fuelRegenerationRate = 0.1f;
-    [SerializeField] private float _jetpackFuelConsumptionAmount = 5f;
+    [SerializeField] private float _dashFuelConsumptionAmount = 5f;
     [SerializeField] private float _sprintFuelConsumptionAmount = 5f;
     [SerializeField] private float _fuelRegenerationAmount = 3f;
 
@@ -60,7 +62,6 @@ public class PlayerData : ActorData
 
     //Public References for Backend
 
-    public CharacterController Controller => controller;
     public PlayerCameraRotation CameraRotation => rotation;
 
     public float CrouchSpeed => _crouchSpeed;
@@ -75,8 +76,7 @@ public class PlayerData : ActorData
     public float VerticalWallRunForwardSpeedMulitplier => _verticalWallClimbForwardSpeedMultiplier;
     public float VerticalWallRunHeight => _verticalWallClimbHeight;
 
-    public float SlideDistance => _slideDistance;
-    public float SlideTime => _slideTime;
+    public float SlideBuffer => _slideBuffer;
 
     public float JumpHeight => _jumpHeight;
     public float WallJumpHeight => _wallJumpHeight;
@@ -97,27 +97,11 @@ public class PlayerData : ActorData
     public float MaxFuel => _maxFuel;
     public float FuelConsumptionRate => _fuelConsumptionRate;
     public float FuelRegenerationRate => _fuelRegenerationRate;
-    public float JetpackFuelConsumption => _jetpackFuelConsumptionAmount;
+    public float DashFuelConsumption => _dashFuelConsumptionAmount;
     public float SprintFuelConsumption => _sprintFuelConsumptionAmount;
     public float FuelRegenerationAmount => _fuelRegenerationAmount;
  
+    //TODO: Move to Settings Data
     public float MouseSensitivity => _mouseSensitivity;
-
-    //Non Persistent Fields
-    //TODO: Move to Player Controller Script
-
-    public Vector3 Velocity = Vector3.zero;
-    public float JumpVelocity => Mathf.Sqrt(2f * -_gravity * _jumpHeight);
-    public float WallJumpVelocity => Mathf.Sqrt(2f * -_gravity * _wallJumpHeight);
-    public float VerticalWallRunVelocity => Mathf.Sqrt(2f * -(_gravity * _verticalWallClimbFalloffRate) * _verticalWallClimbHeight);
-    public float CurrentJumpCount = 0;
-    public float CurrentFuel = 0;
-    public ControllerColliderHit Collision { get; private set; }
-
-
-    private void OnControllerColliderHit(ControllerColliderHit hit)
-    {
-        Collision = hit;
-    }
 
 }

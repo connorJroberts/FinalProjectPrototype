@@ -8,8 +8,8 @@ public class Air : StateComponent
 {
 
     private bool _wallRunComplete = false;
-
     private float _jumpBuffer = 0;
+    private float _slideBuffer = 0;
 
     public override void Enter(string msg = "")
     {
@@ -23,26 +23,29 @@ public class Air : StateComponent
     public override void FixedProcess()
     {
         _jumpBuffer -= Time.fixedDeltaTime;
+        _slideBuffer -= Time.fixedDeltaTime;
 
-        Vector3 hMovement = Quaternion.LookRotation(Actor.transform.forward, Vector3.up) * new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized * Actor.WalkSpeed * Time.fixedDeltaTime;
+        Vector3 hMovement = Quaternion.LookRotation(PlayerData.transform.forward, Vector3.up) * new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized * PlayerData.WalkSpeed * Time.fixedDeltaTime;
 
-        Actor.Velocity.x = Mathf.Lerp(Actor.Velocity.x, hMovement.x, Actor.AirControlFactor);
-        Actor.Velocity.z = Mathf.Lerp(Actor.Velocity.z, hMovement.z, Actor.AirControlFactor);
+        Player.Velocity.x = Mathf.Lerp(Player.Velocity.x, hMovement.x, PlayerData.AirControlFactor);
+        Player.Velocity.z = Mathf.Lerp(Player.Velocity.z, hMovement.z, PlayerData.AirControlFactor);
 
-        Actor.Velocity.y += Actor.Gravity * Time.fixedDeltaTime * Time.fixedDeltaTime;
-        Actor.Controller.Move(Actor.Velocity);
+        Player.Velocity.y += PlayerData.Gravity * Time.fixedDeltaTime * Time.fixedDeltaTime;
+        Player.Controller.Move(Player.Velocity);
 
     }
 
     public override void Process()
     {
-        if (Actor.Controller.collisionFlags == CollisionFlags.Sides && Input.GetAxisRaw("Vertical") == 1 && !_wallRunComplete)
+        if (Player.Controller.collisionFlags == CollisionFlags.Sides && Input.GetAxisRaw("Vertical") == 1 && !_wallRunComplete)
             StateMachine.TransitionTo("WallRun");
-        else if (Input.GetButtonDown("Jump") && (Actor.CurrentJumpCount > 0)) StateMachine.TransitionTo("Jump");
-        else if (Input.GetButtonDown("Jump")) _jumpBuffer = Actor.JumpBuffer;
-        else if (Actor.Controller.isGrounded)
+        else if (Input.GetButtonDown("Jump") && (Player.CurrentJumpCount > 0)) StateMachine.TransitionTo("Jump");
+        else if (Input.GetButtonDown("Jump")) _jumpBuffer = PlayerData.JumpBuffer;
+        else if (Input.GetButtonDown("Crouch")) _slideBuffer = PlayerData.SlideBuffer;
+        else if (Player.Controller.isGrounded)
         {
             if (_jumpBuffer > 0) StateMachine.TransitionTo("Jump");
+            else if (_slideBuffer > 0) StateMachine.TransitionTo("Slide");
             else StateMachine.TransitionTo("Idle");
         }
     }

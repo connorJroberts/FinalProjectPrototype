@@ -13,6 +13,6 @@ public class PlayerRotation : MonoBehaviour
 
     void Update()
     {
-        transform.rotation *= Quaternion.AngleAxis(Input.GetAxisRaw("Mouse X") * _playerData.MouseSensitivity, transform.up);
+        transform.rotation *= Quaternion.AngleAxis(Input.GetAxisRaw("Mouse X") * _playerData.MouseSensitivity, Vector3.up);
     }
 }
