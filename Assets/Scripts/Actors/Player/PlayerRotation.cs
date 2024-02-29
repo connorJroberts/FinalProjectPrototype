@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerRotation : MonoBehaviour
 {
-    [SerializeField, ReadOnly] private PlayerData _playerData;
+    [SerializeField] private PlayerData _playerData;
    
     private void OnValidate()
     {

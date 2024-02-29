@@ -6,9 +6,9 @@ public class StateComponent : MonoBehaviour
 {
     //Base Class
 
-    [SerializeField, ReadOnly] protected StateMachine StateMachine;
-    [SerializeField, ReadOnly] protected PlayerData PlayerData;
-    [SerializeField, ReadOnly] protected PlayerController Player;
+    [SerializeField] protected StateMachine StateMachine;
+    [SerializeField] protected PlayerData PlayerData;
+    [SerializeField] protected PlayerController Player;
 
     public void ConfigureState(StateMachine stateMachine, PlayerData playerData, PlayerController player)
     {
