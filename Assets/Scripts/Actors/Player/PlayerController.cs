@@ -2,13 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.GameCenter;
+using static UnityEditor.FilePathAttribute;
 
 public class PlayerController : MonoBehaviour
 {
 
     [SerializeField] private PlayerData _playerData;
     [SerializeField] private CharacterController _controller;
+    [SerializeField] private PlayerCameraRotation rotation;
 
+    public PlayerCameraRotation CameraRotation => rotation;
     public PlayerData PlayerData => _playerData;
     public CharacterController Controller => _controller;
     public Vector3 Velocity = Vector3.zero;

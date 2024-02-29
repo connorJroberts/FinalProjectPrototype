@@ -12,7 +12,7 @@ public class Slide : StateComponent
         Vector3 groundComponent = Player.Velocity - project;
         _initialPlayerVelocity = groundComponent;
 
-        PlayerData.CameraRotation.gameObject.transform.localPosition = new Vector3(0,1,0);
+        Player.CameraRotation.gameObject.transform.localPosition = new Vector3(0,1,0);
     }
 
     public override void FixedProcess()
@@ -34,7 +34,7 @@ public class Slide : StateComponent
 
     public override void Exit()
     {
-        PlayerData.CameraRotation.gameObject.transform.localPosition = new Vector3(0, 2, 0);
+        Player.CameraRotation.gameObject.transform.localPosition = new Vector3(0, 2, 0);
     }
 
 }

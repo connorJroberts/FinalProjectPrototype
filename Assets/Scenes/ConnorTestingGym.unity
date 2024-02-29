@@ -1357,6 +1357,18 @@ PrefabInstance:
       propertyPath: m_SlopeLimit
       value: 45
       objectReference: {fileID: 0}
+    - target: {fileID: 3205290350101592376, guid: 454818d1b1c35c94384c4c5dc763d8e7, type: 3}
+      propertyPath: _airControlFactor
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3205290350101592376, guid: 454818d1b1c35c94384c4c5dc763d8e7, type: 3}
+      propertyPath: _gravityDropMultiplier
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3205290350101592376, guid: 454818d1b1c35c94384c4c5dc763d8e7, type: 3}
+      propertyPath: _backwardsAirControlFactor
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7355671032158614644, guid: 454818d1b1c35c94384c4c5dc763d8e7, type: 3}
       propertyPath: m_Name
       value: Player
