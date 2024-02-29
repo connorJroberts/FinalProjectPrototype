@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class Dash : StateComponent
 {
-    // Start is called before the first frame update
-    void Start()
+
+    public override void Enter(string msg = "")
     {
-        
+        Player.Velocity = (Player.Velocity.magnitude + PlayerData.DashVelocity) * (Player.CameraRotation.transform.rotation * Vector3.forward) * Time.fixedDeltaTime;
+        Player.Velocity.y += 2 * Time.fixedDeltaTime;
+        Player.Controller.Move(Player.Velocity);
+        StateMachine.TransitionTo("Air");
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

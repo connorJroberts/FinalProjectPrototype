@@ -5,24 +5,21 @@ using UnityEngine;
 public class Slide : StateComponent
 {
     private Vector3 _initialPlayerVelocity;
-    private Vector3 _initialPlayerRight;
 
     public override void Enter(string msg = "")
     {
-        _initialPlayerRight = Player.transform.right;
-        Vector3 groundComponent = Quaternion.AngleAxis(90, _initialPlayerRight) * Player.Collision.normal; //Using to store the vector projection magnitude for velocity maintenance
-       Debug.DrawLine(Player.transform.position, Player.transform.position + groundComponent, Color.red, 5.0f);
-        _initialPlayerVelocity = Vector3.Project(Player.Velocity, groundComponent);
+        Vector3 project = Vector3.Project(Player.Velocity, Player.Collision.normal);
+        Vector3 groundComponent = Player.Velocity - project;
+        _initialPlayerVelocity = groundComponent;
 
-        //Player.transform.position -= new Vector3(0, 1, 0);
-        PlayerData.CameraRotation.gameObject.transform.localPosition = new Vector3(0,1,0);
-
+        Player.CameraRotation.gameObject.transform.localPosition = new Vector3(0,1,0);
     }
 
     public override void FixedProcess()
     {
-        Vector3 groundComponent = Quaternion.AngleAxis(90, _initialPlayerRight) * Player.Collision.normal - Player.Collision.normal * 0.1f; //Using stored velocity magnitude with normalized ground 
-        Player.Velocity = _initialPlayerVelocity.magnitude * groundComponent.normalized;                          //component to ensure velocity doesn't change on new angle surface
+        Vector3 project = Vector3.Project(Player.Velocity, Player.Collision.normal);
+        Vector3 groundComponent = (Player.Velocity - project).normalized * _initialPlayerVelocity.magnitude;
+
         Player.Controller.Move(Player.Velocity);
     }
 
@@ -37,7 +34,7 @@ public class Slide : StateComponent
 
     public override void Exit()
     {
-        PlayerData.CameraRotation.gameObject.transform.localPosition = new Vector3(0, 2, 0);
+        Player.CameraRotation.gameObject.transform.localPosition = new Vector3(0, 2, 0);
     }
 
 }

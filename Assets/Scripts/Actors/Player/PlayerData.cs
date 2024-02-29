@@ -5,9 +5,7 @@ using UnityEngine;
 public class PlayerData : ActorData
 {
     //Private Fields for Designer
-
-    [SerializeField] private PlayerCameraRotation rotation;
-
+ 
     [Header("Move Speeds")]
     [SerializeField] private float _crouchSpeed = 1.0f;
     [SerializeField] private float _walkSpeed = 2f;
@@ -23,8 +21,7 @@ public class PlayerData : ActorData
     [SerializeField] private float _verticalWallClimbHeight = 6f;
 
     [Header("Dash")]
-    [SerializeField] private float _dashDistance = 5f;
-
+    [SerializeField] private float _dashVelocity = 5f;
 
     [Header("Slide")]
     [SerializeField] private float _slideBuffer = 0.2f;
@@ -34,7 +31,10 @@ public class PlayerData : ActorData
     [SerializeField] private float _wallJumpHeight = 1.0f;
     [SerializeField] private float _wallJumpHorizontalForce = 6f;
     [SerializeField] private int _jumpCount = 2;
+
+    [Header("Gravity")]
     [SerializeField] private float _gravity = -10f;
+    [SerializeField] private float _gravityDropMultiplier = 1.5f;
 
     [Header("Jump Curve")]
     [SerializeField] private float _jumpCurveRate = 1.5f;
@@ -48,6 +48,7 @@ public class PlayerData : ActorData
     [SerializeField] private float _momentumFalloffTime = 0.3f;
     [SerializeField] private float _airResistance = 0.1f;
     [SerializeField, Range(0f, 1f)] private float _airControlFactor = 0.3f;
+    [SerializeField, Range(0f, 1f)] private float _backwardsAirControlFactor = 0.3f;
 
     [Header("Fuel")]
     [SerializeField] private float _maxFuel = 100f;
@@ -63,8 +64,6 @@ public class PlayerData : ActorData
 
     //Public References for Backend
 
-    public PlayerCameraRotation CameraRotation => rotation;
-
     public float CrouchSpeed => _crouchSpeed;
     public float WalkSpeed => _walkSpeed;
     public float RunSpeed => _runSpeed;
@@ -77,6 +76,8 @@ public class PlayerData : ActorData
     public float VerticalWallRunForwardSpeedMulitplier => _verticalWallClimbForwardSpeedMultiplier;
     public float VerticalWallRunHeight => _verticalWallClimbHeight;
 
+    public float DashVelocity => _dashVelocity;
+
     public float SlideBuffer => _slideBuffer;
 
     public float JumpHeight => _jumpHeight;
@@ -84,6 +85,7 @@ public class PlayerData : ActorData
     public float WallJumpHorizontalForce => _wallJumpHorizontalForce;
     public int JumpCount => _jumpCount;
     public float Gravity => _gravity;
+    public float GravityDropMultiplier => _gravityDropMultiplier;
 
     public float JumpCurveRate => _jumpCurveRate;
     public JumpCurves JumpCurves => _jumpCurves;
@@ -94,7 +96,8 @@ public class PlayerData : ActorData
     public float MomentumFalloffTime => _momentumFalloffTime;
     public float AirResistance => _airResistance;
     public float AirControlFactor => _airControlFactor;
- 
+    public float BackwardsAirControlFactor => _backwardsAirControlFactor;
+
     public float MaxFuel => _maxFuel;
     public float FuelConsumptionRate => _fuelConsumptionRate;
     public float FuelRegenerationRate => _fuelRegenerationRate;

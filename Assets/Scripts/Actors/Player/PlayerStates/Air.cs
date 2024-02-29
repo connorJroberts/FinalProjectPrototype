@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using System.Timers;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Air : StateComponent
@@ -10,9 +11,11 @@ public class Air : StateComponent
     private bool _wallRunComplete = false;
     private float _jumpBuffer = 0;
     private float _slideBuffer = 0;
+    private Vector3 _initialVelocity;
 
     public override void Enter(string msg = "")
     {
+        _initialVelocity = new Vector3(Player.Velocity.x, 0, Player.Velocity.z) ;
         _jumpBuffer = 0;
 
         if (msg == "WallRunComplete") _wallRunComplete = true;
@@ -25,12 +28,17 @@ public class Air : StateComponent
         _jumpBuffer -= Time.fixedDeltaTime;
         _slideBuffer -= Time.fixedDeltaTime;
 
-        Vector3 hMovement = Quaternion.LookRotation(PlayerData.transform.forward, Vector3.up) * new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized * PlayerData.WalkSpeed * Time.fixedDeltaTime;
+        Vector3 hInput = Quaternion.LookRotation(PlayerData.transform.forward, Vector3.up) * new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
+        if (new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).z == -1f)
+        {
+            Player.Velocity = Vector3.Lerp(Player.Velocity, _initialVelocity.magnitude * hInput.normalized + new Vector3(0, Player.Velocity.y, 0), PlayerData.BackwardsAirControlFactor * (Time.fixedDeltaTime / PlayerData.MomentumFalloffTime));
+        }
+        else if (new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")) != Vector3.zero)
+        {
+            Player.Velocity = Vector3.Lerp(Player.Velocity, _initialVelocity.magnitude * hInput.normalized + new Vector3(0, Player.Velocity.y, 0), PlayerData.AirControlFactor * (Time.fixedDeltaTime / PlayerData.MomentumFalloffTime));
+        }
 
-        Player.Velocity.x = Mathf.Lerp(Player.Velocity.x, hMovement.x, PlayerData.AirControlFactor);
-        Player.Velocity.z = Mathf.Lerp(Player.Velocity.z, hMovement.z, PlayerData.AirControlFactor);
-
-        Player.Velocity.y += PlayerData.Gravity * Time.fixedDeltaTime * Time.fixedDeltaTime;
+        Player.Velocity.y += PlayerData.Gravity * Time.fixedDeltaTime * Time.fixedDeltaTime * (Player.Velocity.y <= 0 ? PlayerData.GravityDropMultiplier : 1);
         Player.Controller.Move(Player.Velocity);
 
     }
@@ -42,12 +50,12 @@ public class Air : StateComponent
         else if (Input.GetButtonDown("Jump") && (Player.CurrentJumpCount > 0)) StateMachine.TransitionTo("Jump");
         else if (Input.GetButtonDown("Jump")) _jumpBuffer = PlayerData.JumpBuffer;
         else if (Input.GetButtonDown("Crouch")) _slideBuffer = PlayerData.SlideBuffer;
+        else if (Input.GetButtonDown("Sprint")) StateMachine.TransitionTo("Dash");
         else if (Player.Controller.isGrounded)
         {
             if (_jumpBuffer > 0) StateMachine.TransitionTo("Jump");
-            else if (_slideBuffer > 0) StateMachine.TransitionTo("Slide");
+            else if (Input.GetButton("Crouch")) StateMachine.TransitionTo("Slide");
             else StateMachine.TransitionTo("Idle");
         }
     }
-
 }
