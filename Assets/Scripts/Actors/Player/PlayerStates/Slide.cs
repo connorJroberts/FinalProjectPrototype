@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Slide : StateComponent
+public class Slide : State
 {
     private Vector3 _initialPlayerVelocity;
 
@@ -25,11 +25,10 @@ public class Slide : StateComponent
 
     public override void Process()
     {
-        if (!Input.GetButton("Crouch")) StateMachine.TransitionTo("Run");
-        else if (Input.GetAxisRaw("Vertical") != 1) StateMachine.TransitionTo("Idle");
-        else if (Player.Controller.collisionFlags == CollisionFlags.Sides) StateMachine.TransitionTo("Run");
-        else if (Input.GetButtonDown("Jump")) StateMachine.TransitionTo("Jump", "SlideComplete");
-        else if (!Player.Controller.isGrounded) StateMachine.TransitionTo("Air");
+        if (!Input.GetButton("Crouch")) StateMachine.TransitionTo(new Run());
+        else if (Player.Controller.collisionFlags == CollisionFlags.Sides) StateMachine.TransitionTo(new Run());
+        else if (Input.GetButtonDown("Jump")) StateMachine.TransitionTo(new Jump(), "SlideComplete");
+        else if (!Player.Controller.isGrounded) StateMachine.TransitionTo(new Air());
     }
 
     public override void Exit()

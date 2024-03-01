@@ -22,6 +22,8 @@ public class PlayerData : ActorData
 
     [Header("Dash")]
     [SerializeField] private float _dashVelocity = 5f;
+    [SerializeField] private float _upwardsDashVelocity = 1f;
+    [SerializeField, Range(-1,1)] private float _dashSpeedMultiplier = 0f;
 
     [Header("Slide")]
     [SerializeField] private float _slideBuffer = 0.2f;
@@ -35,10 +37,6 @@ public class PlayerData : ActorData
     [Header("Gravity")]
     [SerializeField] private float _gravity = -10f;
     [SerializeField] private float _gravityDropMultiplier = 1.5f;
-
-    [Header("Jump Curve")]
-    [SerializeField] private float _jumpCurveRate = 1.5f;
-    [SerializeField] private JumpCurves _jumpCurves;
 
     [Header("Affordance")]
     [SerializeField] private float _coyoteTime = 0.1f;
@@ -77,6 +75,8 @@ public class PlayerData : ActorData
     public float VerticalWallRunHeight => _verticalWallClimbHeight;
 
     public float DashVelocity => _dashVelocity;
+    public float UpwardsDashVelocity => _upwardsDashVelocity;
+    public float DashSpeedMultiplier => _dashSpeedMultiplier;
 
     public float SlideBuffer => _slideBuffer;
 
@@ -86,9 +86,6 @@ public class PlayerData : ActorData
     public int JumpCount => _jumpCount;
     public float Gravity => _gravity;
     public float GravityDropMultiplier => _gravityDropMultiplier;
-
-    public float JumpCurveRate => _jumpCurveRate;
-    public JumpCurves JumpCurves => _jumpCurves;
 
     public float CoyoteTime => _coyoteTime;
     public float JumpBuffer => _jumpBuffer;

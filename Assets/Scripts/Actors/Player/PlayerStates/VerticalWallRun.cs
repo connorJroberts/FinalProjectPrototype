@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class VerticalWallRun : StateComponent
+public class VerticalWallRun : State
 {
     public override void Enter(string msg = "")
     {
         Player.Velocity = new Vector3(0f, Player.VerticalWallRunVelocity, 0f) * Time.fixedDeltaTime;
+        Player.CurrentDashCount = 1;
     }
 
 
@@ -20,6 +21,6 @@ public class VerticalWallRun : StateComponent
 
     public override void Process()
     {
-        if (Player.Velocity.y < 0f) StateMachine.TransitionTo("Air", "WallRunComplete");
+        if (Player.Velocity.y < 0f) StateMachine.TransitionTo(new Air(), "WallRunComplete");
     }
 }

@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
 
-public class Jump : StateComponent
+public class Jump : State
 {
     private Vector3 _input;
     private Vector3 jumpDirection;
@@ -25,7 +24,7 @@ public class Jump : StateComponent
         Player.CurrentJumpCount -= 1;
         Player.Velocity = new Vector3(jumpDirection.x, Player.JumpVelocity * Time.fixedDeltaTime, jumpDirection.z);
         Player.Controller.Move(Player.Velocity);
-        StateMachine.TransitionTo("Air"); 
+        StateMachine.TransitionTo(new Air()); 
 
     }
 }
