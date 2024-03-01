@@ -482,12 +482,12 @@ MonoBehaviour:
   _walkSpeed: 10
   _runSpeed: 10
   _sprintSpeed: 18
-  _wallRunSpeed: 10
+  _wallRunSpeed: 20
   _horizontalWallRunFalloffRate: 0
   _verticalWallClimbInitiationAngle: 15
   _verticalWallClimbFalloffRate: 1.25
   _verticalWallClimbForwardSpeedMultiplier: 0.5
-  _verticalWallClimbHeight: 1
+  _verticalWallClimbHeight: 4
   _dashVelocity: 25
   _slideBuffer: 0.2
   _jumpHeight: 2.2
