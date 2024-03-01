@@ -5,8 +5,11 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/ConnorTestingGym.unity
     guid: c9fc30883ebc3fa4bac6b11f35899c49
+  - enabled: 1
+    path: Assets/Scenes/SergioGym.unity
+    guid: b6b86cd820764c74f8ec8e6e128639e6
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
