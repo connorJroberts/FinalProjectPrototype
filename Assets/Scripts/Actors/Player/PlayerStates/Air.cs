@@ -17,6 +17,7 @@ public class Air : StateComponent
     {
         _initialVelocity = new Vector3(Player.Velocity.x, 0, Player.Velocity.z) ;
         _jumpBuffer = 0;
+        Player.WallRunSpeed = _initialVelocity.magnitude;
 
         if (msg == "WallRunComplete") _wallRunComplete = true;
         else _wallRunComplete = false;
@@ -27,6 +28,8 @@ public class Air : StateComponent
     {
         _jumpBuffer -= Time.fixedDeltaTime;
         _slideBuffer -= Time.fixedDeltaTime;
+
+        if (Player.Controller.collisionFlags == CollisionFlags.Above) Player.Velocity.y = Mathf.Abs(Player.Velocity.y) * -1; //Head Bonk Reflects Y Velocity
 
         Vector3 hInput = Quaternion.LookRotation(PlayerData.transform.forward, Vector3.up) * new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
         if (new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).z == -1f)
@@ -53,6 +56,7 @@ public class Air : StateComponent
         else if (Input.GetButtonDown("Sprint")) StateMachine.TransitionTo("Dash");
         else if (Player.Controller.isGrounded)
         {
+            Player.CurrentFuel = PlayerData.MaxFuel;
             if (_jumpBuffer > 0) StateMachine.TransitionTo("Jump");
             else if (Input.GetButton("Crouch")) StateMachine.TransitionTo("Slide");
             else StateMachine.TransitionTo("Idle");
