@@ -16,8 +16,7 @@ public class Idle : StateComponent
 
     override public void FixedProcess()
     {
-
-        Player.Velocity = Vector3.Lerp(Player.Velocity, Vector3.zero, PlayerData.MomentumFalloffTime * Time.fixedDeltaTime); // Lerps Actor velocity to 0 via Mopmentum Falloff
+        Player.Velocity = Vector3.Lerp(Player.Velocity, Vector3.zero, PlayerData.MomentumFalloffTime * Time.fixedDeltaTime * Time.fixedDeltaTime); // Lerps Actor velocity to 0 via Mopmentum Falloff
 
         //Handle Fuel
         Player.CurrentFuel += PlayerData.FuelRegenerationAmount * PlayerData.FuelRegenerationRate * Time.fixedDeltaTime;
