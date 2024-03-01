@@ -7,6 +7,7 @@ public class VerticalWallRun : StateComponent
     public override void Enter(string msg = "")
     {
         Player.Velocity = new Vector3(0f, Player.VerticalWallRunVelocity, 0f) * Time.fixedDeltaTime;
+        Player.CurrentDashCount = 1;
     }
 
 

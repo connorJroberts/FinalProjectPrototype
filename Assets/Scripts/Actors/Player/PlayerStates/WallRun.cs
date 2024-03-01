@@ -12,6 +12,7 @@ public class WallRun : StateComponent
     public override void Enter(string msg = "")
     {
         Player.CurrentJumpCount = PlayerData.JumpCount - 1;
+        Player.CurrentDashCount = 1;
 
         Vector3 facing = PlayerData.transform.forward;
         Vector3 resultant = (Player.Collision.normal + facing);
