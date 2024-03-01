@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Dash : StateComponent
+public class Dash : State
 {
 
     public override void Enter(string msg = "")
@@ -11,7 +11,7 @@ public class Dash : StateComponent
         Player.Velocity += (Player.Velocity.magnitude + PlayerData.DashVelocity) * (Player.CameraRotation.transform.rotation * Vector3.forward) * Time.fixedDeltaTime * Player.DashSpeedMultiplier;
         Player.Velocity.y += PlayerData.UpwardsDashVelocity * Time.fixedDeltaTime;
         Player.Controller.Move(Player.Velocity);
-        StateMachine.TransitionTo("Air");
+        StateMachine.TransitionTo(new Air());
     }
 
 }

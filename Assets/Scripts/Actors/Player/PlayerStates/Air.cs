@@ -5,7 +5,7 @@ using System.Timers;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Air : StateComponent
+public class Air : State
 {
 
     private bool _wallRunComplete = false;
@@ -49,18 +49,18 @@ public class Air : StateComponent
     public override void Process()
     {
         if (Player.Controller.collisionFlags == CollisionFlags.Sides && Input.GetAxisRaw("Vertical") == 1 && !_wallRunComplete)
-            StateMachine.TransitionTo("WallRun");
-        else if (Input.GetButtonDown("Jump") && (Player.CurrentJumpCount > 0)) StateMachine.TransitionTo("Jump");
+            StateMachine.TransitionTo(new WallRun());
+        else if (Input.GetButtonDown("Jump") && (Player.CurrentJumpCount > 0)) StateMachine.TransitionTo(new Jump());
         else if (Input.GetButtonDown("Jump")) _jumpBuffer = PlayerData.JumpBuffer;
         else if (Input.GetButtonDown("Crouch")) _slideBuffer = PlayerData.SlideBuffer;
-        else if (Input.GetButtonDown("Sprint") && Player.CurrentDashCount == 1) StateMachine.TransitionTo("Dash");
+        else if (Input.GetButtonDown("Sprint") && Player.CurrentDashCount == 1) StateMachine.TransitionTo(new Dash());
         else if (Player.Controller.isGrounded)
         {
             Player.CurrentFuel = PlayerData.MaxFuel;
             Player.CurrentDashCount = 1;
-            if (_jumpBuffer > 0) StateMachine.TransitionTo("Jump");
-            else if (Input.GetButton("Crouch")) StateMachine.TransitionTo("Slide");
-            else StateMachine.TransitionTo("Idle");
+            if (_jumpBuffer > 0) StateMachine.TransitionTo(new Jump());
+            else if (Input.GetButton("Crouch")) StateMachine.TransitionTo(new Slide());
+            else StateMachine.TransitionTo(new Idle());
         }
     }
 }

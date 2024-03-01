@@ -8,20 +8,13 @@ public class StateMachine : MonoBehaviour
     [SerializeField] private PlayerData playerData;
     [SerializeField] private PlayerController player;
     [SerializeField] private string _initialState;
-    private StateComponent _currentState;
+    private State _currentState;
 
-    private Dictionary<string, StateComponent> _states = new Dictionary<string, StateComponent>();
+    private Dictionary<string, State> _states = new Dictionary<string, State>();
 
-    void OnValidate()
+    void Awake()
     {
-        StateComponent[] stateComponents = GetComponents<StateComponent>(); //Pass data into initial state
-        foreach (StateComponent component in stateComponents)
-        {
-            if (_states.ContainsValue(component)) continue;
-            _states.Add(component.GetType().Name, component);
-        }
-
-        SetupState(_initialState);
+        SetupState((State)Activator.CreateInstance( Type.GetType(_initialState)));
     }
 
     void Update()
@@ -34,24 +27,19 @@ public class StateMachine : MonoBehaviour
         _currentState.FixedProcess(); //Run the staate equivalent of FixedUpdate
     }
 
-    public void TransitionTo(string stateName = "", string exitMessage = "")
+    public void TransitionTo(State state, string exitMessage = "")
     {
-        StateComponent state = _states[stateName];
-
         _currentState.Exit(); //Exit Current State
-
         if (state != null)
         {
-            SetupState(stateName);
+            SetupState(state);
         }
-
         _currentState.Enter(exitMessage); //Enter the Next State
-
     }
 
-    private void SetupState(string stateName) //Pass Data into State
+    private void SetupState(State state) //Pass Data into State
     {
-        _currentState = _states[stateName];
+        _currentState = state;
         _currentState.ConfigureState(this, playerData, player);
     }
 }

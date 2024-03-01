@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WallRun : StateComponent
+public class WallRun : State
 {
     private Quaternion wallRunAngle;
     private Vector3 wallRunDirection;
@@ -28,8 +28,8 @@ public class WallRun : StateComponent
             verticalCrossVector = Vector3.down;
         }
         
-        if (Vector3.Angle(facing, -Player.Collision.normal) <= PlayerData.VerticalWallRunInitiationAngle) StateMachine.TransitionTo("VerticalWallRun");
-        else if (Vector3.Angle(facing, -Player.Collision.normal) >= 360f - PlayerData.VerticalWallRunInitiationAngle) StateMachine.TransitionTo("VerticalWallRun");
+        if (Vector3.Angle(facing, -Player.Collision.normal) <= PlayerData.VerticalWallRunInitiationAngle) StateMachine.TransitionTo(new VerticalWallRun());
+        else if (Vector3.Angle(facing, -Player.Collision.normal) >= 360f - PlayerData.VerticalWallRunInitiationAngle) StateMachine.TransitionTo(new VerticalWallRun());
 
     }
 
@@ -58,15 +58,15 @@ public class WallRun : StateComponent
             transitionTimer -= Time.fixedDeltaTime;
             if (transitionTimer < 0.0f)
             {
-                StateMachine.TransitionTo("Air");
+                StateMachine.TransitionTo(new Air());
             }
         }
         else transitionTimer = 1f;
 
-        if (Input.GetButtonDown("Jump")) StateMachine.TransitionTo("WallJump");
-        else if (Input.GetButtonDown("Sprint")) StateMachine.TransitionTo("Dash");
-        else if (Input.GetAxisRaw("Vertical") != 1) StateMachine.TransitionTo("Air");
-        else if (Player.Controller.isGrounded) StateMachine.TransitionTo("Idle");
+        if (Input.GetButtonDown("Jump")) StateMachine.TransitionTo(new WallJump());
+        else if (Input.GetButtonDown("Sprint")) StateMachine.TransitionTo(new Dash());
+        else if (Input.GetAxisRaw("Vertical") != 1) StateMachine.TransitionTo(new Air());
+        else if (Player.Controller.isGrounded) StateMachine.TransitionTo(new Idle());
     }
 
     private void HandleRotation()
