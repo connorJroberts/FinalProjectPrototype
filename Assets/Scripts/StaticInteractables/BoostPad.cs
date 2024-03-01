@@ -17,7 +17,6 @@ public class BoostPad : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        print("HitBoost");
         other.gameObject.TryGetComponent(out PlayerController player);
         if (player != null)
         {
