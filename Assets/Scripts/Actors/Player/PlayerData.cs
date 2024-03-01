@@ -23,6 +23,7 @@ public class PlayerData : ActorData
     [Header("Dash")]
     [SerializeField] private float _dashVelocity = 5f;
     [SerializeField] private float _upwardsDashVelocity = 1f;
+    [SerializeField, Range(-1,1)] private float _dashSpeedMultiplier = 0f;
 
     [Header("Slide")]
     [SerializeField] private float _slideBuffer = 0.2f;
@@ -75,6 +76,7 @@ public class PlayerData : ActorData
 
     public float DashVelocity => _dashVelocity;
     public float UpwardsDashVelocity => _upwardsDashVelocity;
+    public float DashSpeedMultiplier => _dashSpeedMultiplier;
 
     public float SlideBuffer => _slideBuffer;
 
