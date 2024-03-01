@@ -17,11 +17,15 @@ public class PlayerController : MonoBehaviour
     public float WallJumpVelocity => Mathf.Sqrt(2f * -PlayerData.Gravity * PlayerData.WallJumpHeight);
     public float VerticalWallRunVelocity => Mathf.Sqrt(2f * -(PlayerData.Gravity * PlayerData.VerticalWallRunFalloffRate) * PlayerData.VerticalWallRunHeight);
     public float CurrentJumpCount = 0;
+    public float CurrentDashCount = 1;
     public float CurrentFuel = 0;
+    public float WallRunSpeed = 0;
     public ControllerColliderHit Collision { get; private set; }
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
         Collision = hit;
+
     }
+
 }

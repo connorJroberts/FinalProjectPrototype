@@ -26,7 +26,6 @@ public class Slide : StateComponent
     public override void Process()
     {
         if (!Input.GetButton("Crouch")) StateMachine.TransitionTo("Run");
-        else if (Input.GetAxisRaw("Vertical") != 1) StateMachine.TransitionTo("Idle");
         else if (Player.Controller.collisionFlags == CollisionFlags.Sides) StateMachine.TransitionTo("Run");
         else if (Input.GetButtonDown("Jump")) StateMachine.TransitionTo("Jump", "SlideComplete");
         else if (!Player.Controller.isGrounded) StateMachine.TransitionTo("Air");

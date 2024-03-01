@@ -12,6 +12,7 @@ public class WallRun : StateComponent
     public override void Enter(string msg = "")
     {
         Player.CurrentJumpCount = PlayerData.JumpCount - 1;
+        Player.CurrentDashCount = 1;
 
         Vector3 facing = PlayerData.transform.forward;
         Vector3 resultant = (Player.Collision.normal + facing);
@@ -37,7 +38,11 @@ public class WallRun : StateComponent
         //check if - or + with regard to wall normal + set wallRunDirection
         wallRunDirection = wallRunAngle * Player.Collision.normal;
 
-        Player.Velocity = wallRunDirection.normalized * PlayerData.WallRunSpeed * Time.fixedDeltaTime + -Player.Collision.normal * Time.fixedDeltaTime * 10;
+        //Handle Fuel
+        Player.CurrentFuel += PlayerData.FuelRegenerationAmount * PlayerData.FuelRegenerationRate * Time.fixedDeltaTime;
+        Player.CurrentFuel = Mathf.Clamp(Player.CurrentFuel, 0, PlayerData.MaxFuel);
+
+        Player.Velocity = wallRunDirection.normalized * Player.WallRunSpeed + -Player.Collision.normal * Time.fixedDeltaTime * 10;
         Player.Velocity.y += PlayerData.VerticalWallRunFalloffRate * PlayerData.Gravity * Time.fixedDeltaTime * Time.fixedDeltaTime;
         Player.Controller.Move(Player.Velocity);
 
@@ -49,7 +54,7 @@ public class WallRun : StateComponent
 
         if (Player.Controller.collisionFlags == CollisionFlags.None)
         {
-            Player.Velocity = wallRunDirection.normalized * PlayerData.WallRunSpeed * Time.fixedDeltaTime;
+            Player.Velocity = wallRunDirection.normalized * Player.WallRunSpeed;
             transitionTimer -= Time.fixedDeltaTime;
             if (transitionTimer < 0.0f)
             {

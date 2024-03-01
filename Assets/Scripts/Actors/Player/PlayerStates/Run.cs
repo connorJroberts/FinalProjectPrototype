@@ -12,10 +12,6 @@ public class Run : StateComponent
         Player.Velocity = Vector3.Lerp(Player.Velocity, hMove * PlayerData.RunSpeed * Time.fixedDeltaTime, Time.fixedDeltaTime / PlayerData.MomentumFalloffTime) + new Vector3(0, -0.1f, 0);
         Player.Controller.Move(Player.Velocity);
 
-        //Handle Fuel
-        Player.CurrentFuel += PlayerData.FuelRegenerationAmount * PlayerData.FuelRegenerationRate * Time.fixedDeltaTime;
-        Player.CurrentFuel = Mathf.Clamp(Player.CurrentFuel, 0, PlayerData.MaxFuel);
-
     }
 
     public override void Process()
