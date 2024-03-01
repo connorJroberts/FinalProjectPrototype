@@ -53,10 +53,11 @@ public class Air : StateComponent
         else if (Input.GetButtonDown("Jump") && (Player.CurrentJumpCount > 0)) StateMachine.TransitionTo("Jump");
         else if (Input.GetButtonDown("Jump")) _jumpBuffer = PlayerData.JumpBuffer;
         else if (Input.GetButtonDown("Crouch")) _slideBuffer = PlayerData.SlideBuffer;
-        else if (Input.GetButtonDown("Sprint")) StateMachine.TransitionTo("Dash");
+        else if (Input.GetButtonDown("Sprint") && Player.CurrentDashCount == 1) StateMachine.TransitionTo("Dash");
         else if (Player.Controller.isGrounded)
         {
             Player.CurrentFuel = PlayerData.MaxFuel;
+            Player.CurrentDashCount = 1;
             if (_jumpBuffer > 0) StateMachine.TransitionTo("Jump");
             else if (Input.GetButton("Crouch")) StateMachine.TransitionTo("Slide");
             else StateMachine.TransitionTo("Idle");
