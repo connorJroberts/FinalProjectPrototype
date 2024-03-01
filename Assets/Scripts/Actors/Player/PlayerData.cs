@@ -37,10 +37,6 @@ public class PlayerData : ActorData
     [SerializeField] private float _gravity = -10f;
     [SerializeField] private float _gravityDropMultiplier = 1.5f;
 
-    [Header("Jump Curve")]
-    [SerializeField] private float _jumpCurveRate = 1.5f;
-    [SerializeField] private JumpCurves _jumpCurves;
-
     [Header("Affordance")]
     [SerializeField] private float _coyoteTime = 0.1f;
     [SerializeField] private float _jumpBuffer = 0.1f;
@@ -88,9 +84,6 @@ public class PlayerData : ActorData
     public int JumpCount => _jumpCount;
     public float Gravity => _gravity;
     public float GravityDropMultiplier => _gravityDropMultiplier;
-
-    public float JumpCurveRate => _jumpCurveRate;
-    public JumpCurves JumpCurves => _jumpCurves;
 
     public float CoyoteTime => _coyoteTime;
     public float JumpBuffer => _jumpBuffer;
