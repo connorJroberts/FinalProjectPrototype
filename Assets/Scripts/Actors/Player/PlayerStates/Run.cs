@@ -8,8 +8,10 @@ public class Run : State
 
     public override void FixedProcess()
     {
+        float runspeed = Player.Velocity.magnitude > PlayerData.RunSpeed ? Player.Velocity.magnitude : PlayerData.RunSpeed;
 
-        Player.Velocity = Vector3.Lerp(Player.Velocity, hMove * PlayerData.RunSpeed * Time.fixedDeltaTime, Time.fixedDeltaTime / PlayerData.MomentumFalloffTime);
+
+        Player.Velocity = Vector3.Lerp(Player.Velocity, hMove * runspeed * Time.fixedDeltaTime, Time.fixedDeltaTime / PlayerData.MomentumFalloffTime);
         Player.Controller.Move(Player.Velocity);
 
     }
