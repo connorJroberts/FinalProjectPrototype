@@ -21,7 +21,6 @@ public class Run : StateComponent
         if (Player.Velocity == Vector3.zero) StateMachine.TransitionTo("Idle");
         else if (Input.GetButtonDown("Jump")) StateMachine.TransitionTo("Jump");
         else if (Input.GetAxisRaw("Vertical") != 1) StateMachine.TransitionTo("Walk");
-        else if (Input.GetButton("Sprint") && Player.CurrentFuel > 0) StateMachine.TransitionTo("Sprint");
         else if (Input.GetButtonDown("Crouch")) StateMachine.TransitionTo("Crouch");
         else if (!Player.Controller.isGrounded)
         {
