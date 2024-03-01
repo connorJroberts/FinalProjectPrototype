@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     public Vector3 Velocity = Vector3.zero;
     public float JumpVelocity => Mathf.Sqrt(2f * -PlayerData.Gravity * PlayerData.JumpHeight);
     public float WallJumpVelocity => Mathf.Sqrt(2f * -PlayerData.Gravity * PlayerData.WallJumpHeight);
+    public float DashSpeedMultiplier => Mathf.Sqrt(Mathf.Pow(Velocity.magnitude, -PlayerData.DashSpeedMultiplier + 2));
     public float VerticalWallRunVelocity => Mathf.Sqrt(2f * -(PlayerData.Gravity * PlayerData.VerticalWallRunFalloffRate) * PlayerData.VerticalWallRunHeight);
     public float CurrentJumpCount = 0;
     public float CurrentDashCount = 1;
