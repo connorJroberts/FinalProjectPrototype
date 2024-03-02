@@ -1,9 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
-public class StateMachine : MonoBehaviour
+public class StateMachine : NetworkBehaviour
 {
     [SerializeField] private PlayerData playerData;
     [SerializeField] private PlayerController player;
@@ -11,6 +12,12 @@ public class StateMachine : MonoBehaviour
     private State _currentState;
 
     private Dictionary<string, State> _states = new Dictionary<string, State>();
+
+
+    public override void OnNetworkSpawn()
+    {
+        if(!IsOwner) Destroy(this);
+    }
 
     void Awake()
     {
@@ -41,5 +48,6 @@ public class StateMachine : MonoBehaviour
     {
         _currentState = state;
         _currentState.ConfigureState(this, playerData, player);
+        player.CurrentState = state.GetType().Name;
     }
 }
