@@ -8,46 +8,46 @@ public class PlayerData : ScriptableObject
     //Private Fields for Designer
  
     [Header("Move Speeds")]
-    [SerializeField] private float _crouchSpeed = 1.0f;
-    [SerializeField] private float _walkSpeed = 2f;
-    [SerializeField] private float _runSpeed = 3f;
-    [SerializeField] private float _sprintSpeed = 4f;
-    [SerializeField] private float _wallRunSpeed = 3f;
+    [SerializeField] public float _crouchSpeed = 1.0f;
+    [SerializeField] public float _walkSpeed = 2f;
+    [SerializeField] public float _runSpeed = 3f;
+    [SerializeField] public float _sprintSpeed = 4f;
+    [SerializeField] public float _wallRunSpeed = 3f;
 
     [Header("Wall Run")]
-    [SerializeField] private float _horizontalWallRunFalloffRate = 0.3f;
-    [SerializeField] private float _verticalWallClimbInitiationAngle = 15f;
-    [SerializeField] private float _verticalWallClimbFalloffRate = 0.08f;
-    [SerializeField] private float _verticalWallClimbForwardSpeedMultiplier = 0.5f;
-    [SerializeField] private float _verticalWallClimbHeight = 6f;
+    [SerializeField] public float _horizontalWallRunFalloffRate = 0.3f;
+    [SerializeField] public float _verticalWallClimbInitiationAngle = 15f;
+    [SerializeField] public float _verticalWallClimbFalloffRate = 0.08f;
+    [SerializeField] public float _verticalWallClimbForwardSpeedMultiplier = 0.5f;
+    [SerializeField] public float _verticalWallClimbHeight = 6f;
 
     [Header("Dash")]
-    [SerializeField] private float _dashVelocity = 5f;
-    [SerializeField] private float _upwardsDashVelocity = 1f;
+    [SerializeField] public float _dashVelocity = 5f;
+    [SerializeField] public float _upwardsDashVelocity = 1f;
     [SerializeField, Range(-1,1)] private float _dashSpeedMultiplier = 0f;
 
     [Header("Slide")]
-    [SerializeField] private float _slideBuffer = 0.2f;
+    [SerializeField] public float _slideBuffer = 0.2f;
 
     [Header("Jump")]
-    [SerializeField] private float _jumpHeight = 1.5f;
-    [SerializeField] private float _wallJumpHeight = 1.0f;
-    [SerializeField] private float _wallJumpHorizontalForce = 6f;
-    [SerializeField] private int _jumpCount = 2;
+    [SerializeField] public float _jumpHeight = 1.5f;
+    [SerializeField] public float _wallJumpHeight = 1.0f;
+    [SerializeField] public float _wallJumpHorizontalForce = 6f;
+    [SerializeField] public int _jumpCount = 2;
 
     [Header("Gravity")]
-    [SerializeField] private float _gravity = -10f;
-    [SerializeField] private float _gravityDropMultiplier = 1.5f;
+    [SerializeField] public float _gravity = -10f;
+    [SerializeField] public float _gravityDropMultiplier = 1.5f;
 
     [Header("Affordance")]
-    [SerializeField] private float _coyoteTime = 0.1f;
-    [SerializeField] private float _jumpBuffer = 0.1f;
+    [SerializeField] public float _coyoteTime = 0.1f;
+    [SerializeField] public float _jumpBuffer = 0.1f;
 
     [Header("Momentum")]
-    [SerializeField] private float _momentumFalloffTime = 0.3f;
-    [SerializeField] private float _airResistance = 0.1f;
-    [SerializeField, Range(0f, 1f)] private float _airControlFactor = 0.3f;
-    [SerializeField, Range(0f, 1f)] private float _backwardsAirControlFactor = 0.3f;
+    [SerializeField] public float _momentumFalloffTime = 0.3f;
+    [SerializeField] public float _airResistance = 0.1f;
+    [SerializeField, Range(0f, 1f)] public float _airControlFactor = 0.3f;
+    [SerializeField, Range(0f, 1f)] public float _backwardsAirControlFactor = 0.3f;
 
     [Header("Fuel")]
     [SerializeField] private float _maxFuel = 100f;
