@@ -27,7 +27,7 @@ public class Crouch : State
 
     public override void Process()
     {
-        hMove = Quaternion.LookRotation(PlayerData.transform.forward, Vector3.up) * new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
+        hMove = Quaternion.LookRotation(Player.transform.forward, Vector3.up) * new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
 
         if (Input.GetButtonDown("Jump")) StateMachine.TransitionTo(new Jump());
         else if (Input.GetButtonUp("Crouch") && Player.Velocity != Vector3.zero) StateMachine.TransitionTo(new Walk());

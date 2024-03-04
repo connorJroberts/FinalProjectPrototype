@@ -20,7 +20,7 @@ public class PlayerNetwork : NetworkBehaviour
             {
                 Position = transform.position,
                 Rotation = transform.rotation.eulerAngles,
-                State = _playerController.CurrentState
+                State = (int)_playerController.CurrentState
             };
         }
         else
@@ -30,7 +30,7 @@ public class PlayerNetwork : NetworkBehaviour
                 0,
                 Mathf.SmoothDampAngle(transform.rotation.eulerAngles.y, _netState.Value.Rotation.y, ref _rotVelocity, _cheapInterpolationTime),
                 0);
-            _playerController.CurrentState = _netState.Value.State;
+            _playerController.CurrentState = (E_PlayerStates)_netState.Value.State;
         }
     }
 
@@ -38,7 +38,7 @@ public class PlayerNetwork : NetworkBehaviour
     {
         private float _x, _y, _z;
         private short _yRot;
-        private string _state;
+        private int _state;
 
         internal Vector3 Position
         {
@@ -57,7 +57,7 @@ public class PlayerNetwork : NetworkBehaviour
             set => _yRot = (short)value.y;
         }
 
-        internal string State
+        internal int State
         {
             get => _state;
             set => _state = value;
@@ -70,6 +70,8 @@ public class PlayerNetwork : NetworkBehaviour
             serializer.SerializeValue(ref _z);  
 
             serializer.SerializeValue(ref _yRot);
+
+            serializer.SerializeValue(ref _state);
 
         }
     }

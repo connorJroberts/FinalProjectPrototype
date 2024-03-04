@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerData : ActorData
+[CreateAssetMenu]
+public class PlayerData : ScriptableObject
 {
     //Private Fields for Designer
  

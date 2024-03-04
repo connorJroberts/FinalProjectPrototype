@@ -14,7 +14,7 @@ public class WallRun : State
         Player.CurrentJumpCount = PlayerData.JumpCount - 1;
         Player.CurrentDashCount = 1;
 
-        Vector3 facing = PlayerData.transform.forward;
+        Vector3 facing = Player.transform.forward;
         Vector3 resultant = (Player.Collision.normal + facing);
 
         if (Vector3.Angle(resultant, Quaternion.AngleAxis(90, Vector3.up) * Player.Collision.normal) <= 90)
@@ -73,13 +73,13 @@ public class WallRun : State
     {
         Quaternion targetRotation = Quaternion.LookRotation(new Vector3(Player.Velocity.x, 0, Player.Velocity.z).normalized + 0.5f * Player.Collision.normal, Vector3.up);
 
-        float cameraAngle = Vector3.SignedAngle(Player.Collision.normal, PlayerData.transform.forward, verticalCrossVector);
+        float cameraAngle = Vector3.SignedAngle(Player.Collision.normal, Player.transform.forward, verticalCrossVector);
         if (cameraAngle <= 90 && cameraAngle >= 0) 
         {
-            targetRotation = Quaternion.LookRotation(PlayerData.transform.forward, Vector3.up);
+            targetRotation = Quaternion.LookRotation(Player.transform.forward, Vector3.up);
         }
 
-        PlayerData.transform.rotation = Quaternion.Slerp(PlayerData.transform.rotation, targetRotation, 5 * Time.deltaTime);
+        Player.transform.rotation = Quaternion.Slerp(Player.transform.rotation, targetRotation, 5 * Time.deltaTime);
     }
 
 

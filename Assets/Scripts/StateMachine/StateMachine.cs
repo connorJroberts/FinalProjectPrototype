@@ -11,9 +11,6 @@ public class StateMachine : NetworkBehaviour
     [SerializeField] private string _initialState;
     private State _currentState;
 
-    private Dictionary<string, State> _states = new Dictionary<string, State>();
-
-
     public override void OnNetworkSpawn()
     {
         if(!IsOwner) Destroy(this);
@@ -21,7 +18,7 @@ public class StateMachine : NetworkBehaviour
 
     void Awake()
     {
-        SetupState((State)Activator.CreateInstance( Type.GetType(_initialState)));
+        SetupState((State)Activator.CreateInstance(Type.GetType(_initialState))); //Create an instance of the initial state
     }
 
     void Update()
@@ -48,6 +45,6 @@ public class StateMachine : NetworkBehaviour
     {
         _currentState = state;
         _currentState.ConfigureState(this, playerData, player);
-        player.CurrentState = state.GetType().Name;
+        player.CurrentState = Enum.Parse<E_PlayerStates>(_currentState.GetType().Name);
     }
 }

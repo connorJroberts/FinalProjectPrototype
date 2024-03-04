@@ -25,7 +25,7 @@ public class PlayerController : NetworkBehaviour
     public float CurrentFuel = 0;
     public float WallRunSpeed = 0;
 
-    public string CurrentState = "";
+    public E_PlayerStates CurrentState = 0;
 
     public ControllerColliderHit Collision { get; private set; }
 
