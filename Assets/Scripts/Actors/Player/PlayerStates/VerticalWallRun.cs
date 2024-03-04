@@ -13,7 +13,7 @@ public class VerticalWallRun : State
 
     public override void FixedProcess()
     {
-        Player.Velocity = PlayerData.transform.forward * PlayerData.RunSpeed * PlayerData.VerticalWallRunForwardSpeedMulitplier * Time.fixedDeltaTime + new Vector3(0, Player.Velocity.y, 0);
+        Player.Velocity = Player.transform.forward * PlayerData.RunSpeed * PlayerData.VerticalWallRunForwardSpeedMulitplier * Time.fixedDeltaTime + new Vector3(0, Player.Velocity.y, 0);
         Player.Velocity.y += PlayerData.VerticalWallRunFalloffRate * PlayerData.Gravity * Time.fixedDeltaTime * Time.fixedDeltaTime;
 
         Player.Controller.Move(Player.Velocity);

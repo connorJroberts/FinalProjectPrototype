@@ -5,11 +5,6 @@ using UnityEngine;
 public class PlayerRotation : MonoBehaviour
 {
     [SerializeField] private PlayerData _playerData;
-   
-    private void OnValidate()
-    {
-        TryGetComponent<PlayerData>(out _playerData);
-    }
 
     void Update()
     {

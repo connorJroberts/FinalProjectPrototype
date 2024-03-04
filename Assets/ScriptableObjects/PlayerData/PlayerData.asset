@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 156b88668ed52694badfee10dcd9173c, type: 3}
+  m_Name: PlayerData
+  m_EditorClassIdentifier: 
+  _crouchSpeed: 1
+  _walkSpeed: 2
+  _runSpeed: 3
+  _sprintSpeed: 4
+  _wallRunSpeed: 3
+  _horizontalWallRunFalloffRate: 0.3
+  _verticalWallClimbInitiationAngle: 15
+  _verticalWallClimbFalloffRate: 0.08
+  _verticalWallClimbForwardSpeedMultiplier: 0.5
+  _verticalWallClimbHeight: 6
+  _dashVelocity: 5
+  _upwardsDashVelocity: 1
+  _dashSpeedMultiplier: 0
+  _slideBuffer: 0.2
+  _jumpHeight: 1.5
+  _wallJumpHeight: 1
+  _wallJumpHorizontalForce: 6
+  _jumpCount: 2
+  _gravity: -10
+  _gravityDropMultiplier: 1.5
+  _coyoteTime: 0.1
+  _jumpBuffer: 0.1
+  _momentumFalloffTime: 0.3
+  _airResistance: 0.1
+  _airControlFactor: 0.3
+  _backwardsAirControlFactor: 0.3
+  _maxFuel: 100
+  _fuelConsumptionRate: 0.1
+  _fuelRegenerationRate: 0.1
+  _dashFuelConsumptionAmount: 5
+  _sprintFuelConsumptionAmount: 5
+  _fuelRegenerationAmount: 3
+  _mouseSensitivity: 2
+  _defaultCameraHeight: 2

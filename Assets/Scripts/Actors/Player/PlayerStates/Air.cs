@@ -31,7 +31,7 @@ public class Air : State
 
         if (Player.Controller.collisionFlags == CollisionFlags.Above) Player.Velocity.y = Mathf.Abs(Player.Velocity.y) * -1; //Head Bonk Reflects Y Velocity
 
-        Vector3 hInput = Quaternion.LookRotation(PlayerData.transform.forward, Vector3.up) * new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
+        Vector3 hInput = Quaternion.LookRotation(Player.transform.forward, Vector3.up) * new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
         if (new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).z == -1f)
         {
             Player.Velocity = Vector3.Lerp(Player.Velocity, _initialVelocity.magnitude * hInput.normalized + new Vector3(0, Player.Velocity.y, 0), PlayerData.BackwardsAirControlFactor * (Time.fixedDeltaTime / PlayerData.MomentumFalloffTime));

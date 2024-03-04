@@ -1,13 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : NetworkBehaviour
 {
 
     [SerializeField] private PlayerData _playerData;
     [SerializeField] private CharacterController _controller;
     [SerializeField] private PlayerCameraRotation rotation;
+
+    [SerializeField] private GameObject _camera;
 
     public PlayerCameraRotation CameraRotation => rotation;
     public PlayerData PlayerData => _playerData;
@@ -21,12 +24,26 @@ public class PlayerController : MonoBehaviour
     public float CurrentDashCount = 1;
     public float CurrentFuel = 0;
     public float WallRunSpeed = 0;
+
+    public E_PlayerStates CurrentState = 0;
+
     public ControllerColliderHit Collision { get; private set; }
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
         Collision = hit;
 
+    }
+
+    private void Start()
+    {
+        if (IsOwner)
+        {
+            var cam = Instantiate(_camera, gameObject.transform);
+            cam.TryGetComponent(out PlayerCameraRotation rot);
+            rotation = rot;
+            rot.PlayerData = _playerData;
+        }
     }
 
 }

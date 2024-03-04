@@ -1,20 +1,24 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
-public class StateMachine : MonoBehaviour
+public class StateMachine : NetworkBehaviour
 {
     [SerializeField] private PlayerData playerData;
     [SerializeField] private PlayerController player;
     [SerializeField] private string _initialState;
     private State _currentState;
 
-    private Dictionary<string, State> _states = new Dictionary<string, State>();
+    public override void OnNetworkSpawn()
+    {
+        if(!IsOwner) Destroy(this);
+    }
 
     void Awake()
     {
-        SetupState((State)Activator.CreateInstance( Type.GetType(_initialState)));
+        SetupState((State)Activator.CreateInstance(Type.GetType(_initialState))); //Create an instance of the initial state
     }
 
     void Update()
@@ -41,5 +45,6 @@ public class StateMachine : MonoBehaviour
     {
         _currentState = state;
         _currentState.ConfigureState(this, playerData, player);
+        player.CurrentState = Enum.Parse<E_PlayerStates>(_currentState.GetType().Name);
     }
 }
