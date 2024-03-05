@@ -11,6 +11,7 @@ public class PlayerController : NetworkBehaviour
     [SerializeField] private PlayerCameraRotation rotation;
 
     [SerializeField] private GameObject _camera;
+    [SerializeField] private GameObject _hud;
 
     public PlayerCameraRotation CameraRotation => rotation;
     public PlayerData PlayerData => _playerData;
@@ -43,6 +44,8 @@ public class PlayerController : NetworkBehaviour
             cam.TryGetComponent(out PlayerCameraRotation rot);
             rotation = rot;
             rot.PlayerData = _playerData;
+
+            var hud = Instantiate(_hud, gameObject.transform);
         }
     }
 

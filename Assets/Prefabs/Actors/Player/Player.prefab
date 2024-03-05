@@ -218,6 +218,7 @@ MonoBehaviour:
   _controller: {fileID: 1126209350573050912}
   rotation: {fileID: 0}
   _camera: {fileID: 4739456406028981430, guid: 67174d1f7746377409163145e66307f7, type: 3}
+  _hud: {fileID: 8360789365075529301, guid: e90e0e2ec089626468520ca255a13750, type: 3}
   Velocity: {x: 0, y: 0, z: 0}
   CurrentJumpCount: 0
   CurrentDashCount: 1
