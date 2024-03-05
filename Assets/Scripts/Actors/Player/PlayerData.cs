@@ -8,11 +8,11 @@ public class PlayerData : ScriptableObject
     //Private Fields for Designer
  
     [Header("Move Speeds")]
-    [SerializeField] private float _crouchSpeed = 1.0f;
-    [SerializeField] private float _walkSpeed = 2f;
-    [SerializeField] private float _runSpeed = 3f;
-    [SerializeField] private float _sprintSpeed = 4f;
-    [SerializeField] private float _wallRunSpeed = 3f;
+    [SerializeField] public float _crouchSpeed = 1.0f;
+    [SerializeField] public float _walkSpeed = 2f;
+    [SerializeField] public float _runSpeed = 3f;
+    [SerializeField] public float _sprintSpeed = 4f;
+    [SerializeField] public float _wallRunSpeed = 3f;
 
     [Header("Wall Run")]
     [SerializeField] private float _horizontalWallRunFalloffRate = 0.3f;
