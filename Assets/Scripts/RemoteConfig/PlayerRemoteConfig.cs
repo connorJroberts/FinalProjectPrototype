@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Unity.Services.Authentication;
@@ -44,7 +45,7 @@ public class PlayerRemoteConfig : MonoBehaviour
     {
         Debug.Log("RemoteConfigService.Instance.appConfig fetched: " + RemoteConfigService.Instance.appConfig.config.ToString());
 
-        foreach (var prop in typeof(PlayerData).GetFields())
+        foreach (var prop in typeof(PlayerData).GetFields(BindingFlags.NonPublic | BindingFlags.Instance))
         {
             if (prop.FieldType == typeof(int)) prop.SetValue(playerData, Convert.ToInt32(RemoteConfigService.Instance.appConfig.config.GetValue(prop.Name).ToString()));
             else prop.SetValue(playerData, Convert.ToSingle(RemoteConfigService.Instance.appConfig.config.GetValue(prop.Name).ToString()));
