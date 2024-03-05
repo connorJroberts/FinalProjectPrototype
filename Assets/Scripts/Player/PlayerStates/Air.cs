@@ -52,7 +52,6 @@ public class Air : State
             StateMachine.TransitionTo(new WallRun());
         else if (Input.GetButtonDown("Jump") && (Player.CurrentJumpCount > 0)) StateMachine.TransitionTo(new Jump());
         else if (Input.GetButtonDown("Jump")) _jumpBuffer = PlayerData.JumpBuffer;
-        else if (Input.GetButtonDown("Crouch")) _slideBuffer = PlayerData.SlideBuffer;
         else if (Input.GetButtonDown("Sprint") && Player.CurrentDashCount == 1) StateMachine.TransitionTo(new Dash());
         else if (Player.Controller.isGrounded)
         {
