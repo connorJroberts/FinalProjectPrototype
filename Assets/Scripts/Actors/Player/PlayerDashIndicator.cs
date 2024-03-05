@@ -15,7 +15,7 @@ public class PlayerDashIndicator : MonoBehaviour
     {
         if (_playerView == null) return;
         if (_dodgeIndicator == null) return;
-        if (_playerView.CurrentDashCount > 0)
+        if (_playerView.Controller.CurrentDashCount != 0)
         {
             _dodgeIndicator.SetActive(true);
         }
