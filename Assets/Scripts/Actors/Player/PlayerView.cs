@@ -7,6 +7,7 @@ public class PlayerView : NetworkBehaviour
 {
 
     [SerializeField] private PlayerController _controller;
+    public PlayerController Controller => _controller;
 
     // Start is called before the first frame update
     void Start()
