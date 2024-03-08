@@ -12,7 +12,6 @@ public class PlayerData : ScriptableObject
     [SerializeField] private float _walkSpeed = 2f;
     [SerializeField] private float _runSpeed = 3f;
     [SerializeField] private float _sprintSpeed = 4f;
-    [SerializeField] private float _wallRunSpeed = 3f;
 
     [Header("Wall Run")]
     [SerializeField] private float _horizontalWallRunFalloffRate = 0.3f;
@@ -25,9 +24,6 @@ public class PlayerData : ScriptableObject
     [SerializeField] private float _dashVelocity = 5f;
     [SerializeField] private float _upwardsDashVelocity = 1f;
     [SerializeField, Range(-1,1)] private float _dashSpeedMultiplier = 0f;
-
-    [Header("Slide")]
-    [SerializeField] private float _slideBuffer = 0.2f;
 
     [Header("Jump")]
     [SerializeField] private float _jumpHeight = 1.5f;
@@ -45,7 +41,6 @@ public class PlayerData : ScriptableObject
 
     [Header("Momentum")]
     [SerializeField] private float _momentumFalloffTime = 0.3f;
-    [SerializeField] private float _airResistance = 0.1f;
     [SerializeField, Range(0f, 1f)] private float _airControlFactor = 0.3f;
     [SerializeField, Range(0f, 1f)] private float _backwardsAirControlFactor = 0.3f;
 
@@ -67,7 +62,6 @@ public class PlayerData : ScriptableObject
     public float WalkSpeed => _walkSpeed;
     public float RunSpeed => _runSpeed;
     public float SprintSpeed => _sprintSpeed;
-    public float WallRunSpeed => _wallRunSpeed;
 
     public float HorizontalWallRunFalloffRate => _horizontalWallRunFalloffRate;
     public float VerticalWallRunInitiationAngle => _verticalWallClimbInitiationAngle;
@@ -78,8 +72,6 @@ public class PlayerData : ScriptableObject
     public float DashVelocity => _dashVelocity;
     public float UpwardsDashVelocity => _upwardsDashVelocity;
     public float DashSpeedMultiplier => _dashSpeedMultiplier;
-
-    public float SlideBuffer => _slideBuffer;
 
     public float JumpHeight => _jumpHeight;
     public float WallJumpHeight => _wallJumpHeight;
@@ -92,7 +84,6 @@ public class PlayerData : ScriptableObject
     public float JumpBuffer => _jumpBuffer;
 
     public float MomentumFalloffTime => _momentumFalloffTime;
-    public float AirResistance => _airResistance;
     public float AirControlFactor => _airControlFactor;
     public float BackwardsAirControlFactor => _backwardsAirControlFactor;
 
