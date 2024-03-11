@@ -19,6 +19,7 @@ public class PlayerData : ScriptableObject
     [SerializeField] private float _verticalWallClimbFalloffRate = 0.08f;
     [SerializeField] private float _verticalWallClimbForwardSpeedMultiplier = 0.5f;
     [SerializeField] private float _verticalWallClimbHeight = 6f;
+    [SerializeField] private float _wallRunCameraAngle = 15f;
 
     [Header("Dash")]
     [SerializeField] private float _dashVelocity = 5f;
@@ -68,6 +69,7 @@ public class PlayerData : ScriptableObject
     public float VerticalWallRunFalloffRate => _verticalWallClimbFalloffRate;
     public float VerticalWallRunForwardSpeedMulitplier => _verticalWallClimbForwardSpeedMultiplier;
     public float VerticalWallRunHeight => _verticalWallClimbHeight;
+    public float WallRunCameraAngle => _wallRunCameraAngle;
 
     public float DashVelocity => _dashVelocity;
     public float UpwardsDashVelocity => _upwardsDashVelocity;

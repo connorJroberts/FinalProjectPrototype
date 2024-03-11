@@ -15,6 +15,6 @@ public class PlayerCameraRotation : MonoBehaviour
     void Update()
     {
         transform.Rotate(Vector3.right, -Input.GetAxisRaw("Mouse Y") * PlayerData.MouseSensitivity);
-        transform.localRotation = new Quaternion(Mathf.Clamp(transform.localRotation.x, -0.7f, 0.7f), 0, 0, transform.localRotation.w);
+        transform.localRotation = new Quaternion(Mathf.Clamp(transform.localRotation.x, -0.7f, 0.7f), 0, transform.localRotation.z, transform.localRotation.w);
     }
 }
