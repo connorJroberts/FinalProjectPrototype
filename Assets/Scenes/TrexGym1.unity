@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 80.59077, g: 45.376347, b: 22.45476, a: 1}
+  m_IndirectSpecularColor: {r: 80.57496, g: 45.3718, b: 22.451128, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -149,7 +149,6 @@ MonoBehaviour:
   m_Script: {fileID: 1622340223}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Entries: []
 --- !u!4 &149546604
 Transform:
   m_ObjectHideFlags: 19
@@ -775,6 +774,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 691675139189302052, guid: cf0eb911af0daeb4ba96a1c203a8f503, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 6aac9231ea94a4f49b534b02973787bb, type: 2}
     - target: {fileID: 1340294434754347761, guid: cf0eb911af0daeb4ba96a1c203a8f503, type: 3}
       propertyPath: m_Name
       value: PeanutPillBuilding (1)
@@ -931,6 +934,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 691675139189302052, guid: cf0eb911af0daeb4ba96a1c203a8f503, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 7b3c5cb410c5fcc43ae2f26866330181, type: 2}
     - target: {fileID: 1340294434754347761, guid: cf0eb911af0daeb4ba96a1c203a8f503, type: 3}
       propertyPath: m_Name
       value: PeanutPillBuilding (3)
@@ -992,6 +999,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf0eb911af0daeb4ba96a1c203a8f503, type: 3}
+--- !u!1001 &1873111807
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 655396811063433989, guid: 10adf4ca1003fd4449dd4c77282dbfc8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 655396811063433989, guid: 10adf4ca1003fd4449dd4c77282dbfc8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 655396811063433989, guid: 10adf4ca1003fd4449dd4c77282dbfc8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 655396811063433989, guid: 10adf4ca1003fd4449dd4c77282dbfc8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 655396811063433989, guid: 10adf4ca1003fd4449dd4c77282dbfc8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 655396811063433989, guid: 10adf4ca1003fd4449dd4c77282dbfc8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 655396811063433989, guid: 10adf4ca1003fd4449dd4c77282dbfc8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 655396811063433989, guid: 10adf4ca1003fd4449dd4c77282dbfc8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 655396811063433989, guid: 10adf4ca1003fd4449dd4c77282dbfc8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 655396811063433989, guid: 10adf4ca1003fd4449dd4c77282dbfc8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2450551655801891188, guid: 10adf4ca1003fd4449dd4c77282dbfc8, type: 3}
+      propertyPath: m_Name
+      value: MainCamera
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 10adf4ca1003fd4449dd4c77282dbfc8, type: 3}
 --- !u!1001 &1954656977484850888
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1000,6 +1064,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 691675139189302052, guid: cf0eb911af0daeb4ba96a1c203a8f503, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4de9012835024a54cb190d9a32703e3b, type: 2}
     - target: {fileID: 1340294434754347761, guid: cf0eb911af0daeb4ba96a1c203a8f503, type: 3}
       propertyPath: m_Name
       value: PeanutPillBuilding
@@ -1120,3 +1188,4 @@ SceneRoots:
   - {fileID: 458289154}
   - {fileID: 1766749612}
   - {fileID: 1272841920}
+  - {fileID: 1873111807}
