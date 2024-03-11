@@ -69,7 +69,6 @@ public class WallRun : State
         else transitionTimer = 1f;
 
         if (Input.GetButtonDown("Jump")) StateMachine.TransitionTo(new WallJump());
-        else if (Input.GetButtonDown("Sprint")) StateMachine.TransitionTo(new Dash());
         else if (Input.GetAxisRaw("Vertical") != 1) StateMachine.TransitionTo(new Air());
         else if (Player.Controller.isGrounded) StateMachine.TransitionTo(new Idle());
     }
