@@ -15,6 +15,7 @@ public class Air : State
 
     public override void Enter(string msg = "")
     {
+        Player.TargetCameraTilt = 0;
         _initialVelocity = new Vector3(Player.Velocity.x, 0, Player.Velocity.z) ;
         _jumpBuffer = 0;
         Player.WallRunSpeed = _initialVelocity.magnitude;
