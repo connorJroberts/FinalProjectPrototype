@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 80.92164, g: 45.6283, b: 22.59421, a: 1}
+  m_IndirectSpecularColor: {r: 80.55064, g: 45.352207, b: 22.43622, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -678,7 +678,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 07ab86f18c9aa8f4db2dd2ab0a965651, type: 2}
+  - {fileID: 2100000, guid: 7b3c5cb410c5fcc43ae2f26866330181, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1018,6 +1018,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 59bc269e99e84d442b798fdff78d6af8, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 6aac9231ea94a4f49b534b02973787bb, type: 2}
     - target: {fileID: 919132149155446097, guid: 59bc269e99e84d442b798fdff78d6af8, type: 3}
       propertyPath: m_Name
       value: Halfpipe
@@ -1321,6 +1325,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 59d5d02ddf450ae449fcd9d76e56359a, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4de9012835024a54cb190d9a32703e3b, type: 2}
     - target: {fileID: 919132149155446097, guid: 59d5d02ddf450ae449fcd9d76e56359a, type: 3}
       propertyPath: m_Name
       value: QuarterpipeS (2)
@@ -1663,6 +1671,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 750373b1412ef4a4f88e4a41a283dd13, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 6d555c270ed8a794088b18b79d3d19a8, type: 2}
     - target: {fileID: 919132149155446097, guid: 750373b1412ef4a4f88e4a41a283dd13, type: 3}
       propertyPath: m_Name
       value: HalfpipeS
@@ -2079,7 +2091,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 07ab86f18c9aa8f4db2dd2ab0a965651, type: 2}
+  - {fileID: 2100000, guid: 6d555c270ed8a794088b18b79d3d19a8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2268,6 +2280,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 8eeaf0e84b450684cb6a9d0a78a0b71f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 8adeb1e005fdd6c4e8b47862cf4465ca, type: 2}
     - target: {fileID: 919132149155446097, guid: 8eeaf0e84b450684cb6a9d0a78a0b71f, type: 3}
       propertyPath: m_Name
       value: QuarterBlockConcave (2)
@@ -2394,6 +2410,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 59d5d02ddf450ae449fcd9d76e56359a, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 6aac9231ea94a4f49b534b02973787bb, type: 2}
     - target: {fileID: 919132149155446097, guid: 59d5d02ddf450ae449fcd9d76e56359a, type: 3}
       propertyPath: m_Name
       value: QuarterpipeS (1)
@@ -2555,75 +2575,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: babe47effcd84b24cba3c69d4b469476, type: 3}
---- !u!1001 &1856807987
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: 750373b1412ef4a4f88e4a41a283dd13, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.8662
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 750373b1412ef4a4f88e4a41a283dd13, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.8662
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 750373b1412ef4a4f88e4a41a283dd13, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.8662
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 750373b1412ef4a4f88e4a41a283dd13, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 2.0727
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 750373b1412ef4a4f88e4a41a283dd13, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -5.960001
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 750373b1412ef4a4f88e4a41a283dd13, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -17.57
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 750373b1412ef4a4f88e4a41a283dd13, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 750373b1412ef4a4f88e4a41a283dd13, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 750373b1412ef4a4f88e4a41a283dd13, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 750373b1412ef4a4f88e4a41a283dd13, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 750373b1412ef4a4f88e4a41a283dd13, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 750373b1412ef4a4f88e4a41a283dd13, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 750373b1412ef4a4f88e4a41a283dd13, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 750373b1412ef4a4f88e4a41a283dd13, type: 3}
-      propertyPath: m_Name
-      value: HalfpipeS (1)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 750373b1412ef4a4f88e4a41a283dd13, type: 3}
 --- !u!1001 &1881461779
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2769,7 +2720,6 @@ SceneRoots:
   - {fileID: 688842715}
   - {fileID: 867469798}
   - {fileID: 1881461779}
-  - {fileID: 1856807987}
   - {fileID: 950288531}
   - {fileID: 1192269921}
   - {fileID: 1791920910}
