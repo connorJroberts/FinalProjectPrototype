@@ -6,7 +6,7 @@ public class WallJump : State
 {
     public override void Enter(string msg = "")
     {
-        Player.Velocity = Player.Collision.normal * PlayerData.WallJumpHorizontalForce * Time.fixedDeltaTime + Player.transform.forward * Player.WallRunSpeed * Time.fixedDeltaTime;
+        Player.Velocity = Player.Collision.normal * PlayerData.WallJumpHorizontalForce * Time.fixedDeltaTime + Player.transform.forward * Player.WallRunSpeed;
         Player.Velocity.y = Player.WallJumpVelocity * Time.fixedDeltaTime;
         Player.Controller.Move(Player.Velocity);
         StateMachine.TransitionTo(new Air());
