@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Netcode;
+using Unity.Services.Lobbies.Models;
 using UnityEngine;
 
 public class PlayerController : NetworkBehaviour
@@ -8,12 +9,12 @@ public class PlayerController : NetworkBehaviour
 
     [SerializeField] private PlayerData _playerData;
     [SerializeField] private CharacterController _controller;
-    [SerializeField] private PlayerCameraRotation rotation;
+    [SerializeField] private PlayerCameraRotation _rotation;
 
     [SerializeField] private GameObject _camera;
     [SerializeField] private GameObject _hud;
 
-    public PlayerCameraRotation CameraRotation => rotation;
+    public PlayerCameraRotation CameraRotation => _rotation;
     public PlayerData PlayerData => _playerData;
     public CharacterController Controller => _controller;
     public Vector3 Velocity = Vector3.zero;
@@ -42,11 +43,32 @@ public class PlayerController : NetworkBehaviour
         {
             var cam = Instantiate(_camera, gameObject.transform);
             cam.TryGetComponent(out PlayerCameraRotation rot);
-            rotation = rot;
+            _rotation = rot;
             rot.PlayerData = _playerData;
 
             var hud = Instantiate(_hud, gameObject.transform);
         }
+    }
+
+    public void HandleRotation(float targetRot)
+    {
+        StartCoroutine(HandleRotationRoutine(targetRot));
+    }
+
+    private IEnumerator HandleRotationRoutine(float targetRot)
+    {
+        while (!Mathf.Approximately(Mathf.Round(Mathf.Rad2Deg * CameraRotation.transform.rotation.z) , targetRot))
+        {
+            CameraRotation.transform.localRotation = new Quaternion()
+            {
+                x = CameraRotation.transform.localRotation.x,
+                y = 0,
+                z = Mathf.LerpAngle(CameraRotation.transform.localRotation.z, Mathf.Deg2Rad * targetRot, 5 * Time.deltaTime),
+                w = CameraRotation.transform.localRotation.w,
+            };
+            yield return null ;
+        }
+
     }
 
 }

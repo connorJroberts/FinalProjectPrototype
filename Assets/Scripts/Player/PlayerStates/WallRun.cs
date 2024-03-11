@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Build;
 using UnityEngine;
 
 public class WallRun : State
@@ -11,6 +12,8 @@ public class WallRun : State
 
     public override void Enter(string msg = "")
     {
+        int directionSign = 1;
+
         Player.CurrentJumpCount = PlayerData.JumpCount - 1;
         Player.CurrentDashCount = 1;
 
@@ -26,10 +29,14 @@ public class WallRun : State
         {
             wallRunAngle = Quaternion.AngleAxis(-92, Vector3.up);
             verticalCrossVector = Vector3.down;
+            directionSign = -1;
         }
         
         if (Vector3.Angle(facing, -Player.Collision.normal) <= PlayerData.VerticalWallRunInitiationAngle) StateMachine.TransitionTo(new VerticalWallRun());
         else if (Vector3.Angle(facing, -Player.Collision.normal) >= 360f - PlayerData.VerticalWallRunInitiationAngle) StateMachine.TransitionTo(new VerticalWallRun());
+
+        Player.StopAllCoroutines();
+        Player.HandleRotation(PlayerData.WallRunCameraAngle * directionSign);
 
     }
 
@@ -50,7 +57,6 @@ public class WallRun : State
 
     public override void Process()
     {
-        HandleRotation();
 
         if (Player.Controller.collisionFlags == CollisionFlags.None)
         {
@@ -69,18 +75,10 @@ public class WallRun : State
         else if (Player.Controller.isGrounded) StateMachine.TransitionTo(new Idle());
     }
 
-    private void HandleRotation()
+    public override void Exit()
     {
-        Quaternion targetRotation = Quaternion.LookRotation(new Vector3(Player.Velocity.x, 0, Player.Velocity.z).normalized + 0.5f * Player.Collision.normal, Vector3.up);
-
-        float cameraAngle = Vector3.SignedAngle(Player.Collision.normal, Player.transform.forward, verticalCrossVector);
-        if (cameraAngle <= 90 && cameraAngle >= 0) 
-        {
-            targetRotation = Quaternion.LookRotation(Player.transform.forward, Vector3.up);
-        }
-
-        Player.transform.rotation = Quaternion.Slerp(Player.transform.rotation, targetRotation, 5 * Time.deltaTime);
+        Player.StopAllCoroutines();
+        Player.HandleRotation(0f);
     }
-
 
 }
