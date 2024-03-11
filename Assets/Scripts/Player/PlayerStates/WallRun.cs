@@ -35,8 +35,7 @@ public class WallRun : State
         if (Vector3.Angle(facing, -Player.Collision.normal) <= PlayerData.VerticalWallRunInitiationAngle) StateMachine.TransitionTo(new VerticalWallRun());
         else if (Vector3.Angle(facing, -Player.Collision.normal) >= 360f - PlayerData.VerticalWallRunInitiationAngle) StateMachine.TransitionTo(new VerticalWallRun());
 
-        Player.StopAllCoroutines();
-        Player.HandleRotation(PlayerData.WallRunCameraAngle * directionSign);
+        Player.TargetCameraTilt = (PlayerData.WallRunCameraAngle * directionSign);
 
     }
 
@@ -70,15 +69,13 @@ public class WallRun : State
         else transitionTimer = 1f;
 
         if (Input.GetButtonDown("Jump")) StateMachine.TransitionTo(new WallJump());
-        else if (Input.GetButtonDown("Sprint")) StateMachine.TransitionTo(new Dash());
         else if (Input.GetAxisRaw("Vertical") != 1) StateMachine.TransitionTo(new Air());
         else if (Player.Controller.isGrounded) StateMachine.TransitionTo(new Idle());
     }
 
     public override void Exit()
     {
-        Player.StopAllCoroutines();
-        Player.HandleRotation(0f);
+        Player.TargetCameraTilt = 0;
     }
 
 }
