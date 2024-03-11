@@ -10,12 +10,12 @@ public class PlayerController : NetworkBehaviour
 
     [SerializeField] private PlayerData _playerData;
     [SerializeField] private CharacterController _controller;
-    [SerializeField] private PlayerCameraRotation _rotation;
+    [SerializeField] private PlayerCamera _rotation;
 
     [SerializeField] private GameObject _camera;
     [SerializeField] private GameObject _hud;
 
-    public PlayerCameraRotation CameraRotation => _rotation;
+    public PlayerCamera CameraRotation => _rotation;
     public PlayerData PlayerData => _playerData;
     public CharacterController Controller => _controller;
     public Vector3 Velocity = Vector3.zero;
@@ -44,7 +44,7 @@ public class PlayerController : NetworkBehaviour
         if (IsOwner)
         {
             var cam = Instantiate(_camera, gameObject.transform);
-            cam.TryGetComponent(out PlayerCameraRotation rot);
+            cam.TryGetComponent(out PlayerCamera rot);
             _rotation = rot;
             rot.PlayerData = _playerData;
 
