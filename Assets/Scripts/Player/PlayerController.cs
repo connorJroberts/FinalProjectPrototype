@@ -54,13 +54,18 @@ public class PlayerController : NetworkBehaviour
 
     private void Update()
     {
-        CameraRotation.transform.localRotation = new Quaternion
+
+        if (CameraRotation != null) 
         {
-            x = CameraRotation.transform.localRotation.x,
-            y = 0,
-            z = Mathf.LerpAngle(CameraRotation.transform.localRotation.z, Mathf.Deg2Rad * TargetCameraTilt, 5 * Time.deltaTime),
-            w = CameraRotation.transform.localRotation.w,
-        };
+            CameraRotation.transform.localRotation = new Quaternion
+            {
+                x = CameraRotation.transform.localRotation.x,
+                y = 0,
+                z = Mathf.LerpAngle(CameraRotation.transform.localRotation.z, Mathf.Deg2Rad * TargetCameraTilt, 5 * Time.deltaTime),
+                w = CameraRotation.transform.localRotation.w,
+            };
+        }
+        
     }
 
 }
