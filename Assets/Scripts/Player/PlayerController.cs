@@ -21,7 +21,7 @@ public class PlayerController : NetworkBehaviour
     public Vector3 Velocity = Vector3.zero;
     public float JumpVelocity => Mathf.Sqrt(2f * -PlayerData.Gravity * PlayerData.JumpHeight);
     public float WallJumpVelocity => Mathf.Sqrt(2f * -PlayerData.Gravity * PlayerData.WallJumpHeight);
-    public float DashSpeedMultiplier => Mathf.Sqrt(Mathf.Pow(Velocity.magnitude, -PlayerData.DashSpeedMultiplier + 2));
+    public float DashSpeedMultiplier => Mathf.Pow(Velocity.magnitude, -1) * PlayerData.DashSpeedMultiplier * Time.fixedDeltaTime;
     public float VerticalWallRunVelocity => Mathf.Sqrt(2f * -(PlayerData.Gravity * PlayerData.VerticalWallRunFalloffRate) * PlayerData.VerticalWallRunHeight);
     public float CurrentJumpCount = 0;
     public float CurrentDashCount = 1;
@@ -54,7 +54,7 @@ public class PlayerController : NetworkBehaviour
 
     private void Update()
     {
-        CameraRotation.transform.localRotation = new Quaternion()
+        CameraRotation.transform.localRotation = new Quaternion
         {
             x = CameraRotation.transform.localRotation.x,
             y = 0,
