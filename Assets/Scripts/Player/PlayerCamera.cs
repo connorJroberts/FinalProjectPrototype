@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerCameraRotation : MonoBehaviour
+public class PlayerCamera : MonoBehaviour
 {
 
     [SerializeField] public PlayerData PlayerData;

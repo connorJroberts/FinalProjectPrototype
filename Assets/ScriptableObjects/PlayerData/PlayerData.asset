@@ -13,31 +13,29 @@ MonoBehaviour:
   m_Name: PlayerData
   m_EditorClassIdentifier: 
   _crouchSpeed: 1
-  _walkSpeed: 2
-  _runSpeed: 3
-  _sprintSpeed: 4
-  _wallRunSpeed: 3
-  _horizontalWallRunFalloffRate: 0.3
+  _walkSpeed: 15
+  _runSpeed: 15
+  _sprintSpeed: 15
+  _horizontalWallRunFalloffRate: 0
   _verticalWallClimbInitiationAngle: 15
-  _verticalWallClimbFalloffRate: 0.08
+  _verticalWallClimbFalloffRate: 1.25
   _verticalWallClimbForwardSpeedMultiplier: 0.5
-  _verticalWallClimbHeight: 6
-  _dashVelocity: 5
-  _upwardsDashVelocity: 1
-  _dashSpeedMultiplier: 0
-  _slideBuffer: 0.2
-  _jumpHeight: 1.5
-  _wallJumpHeight: 1
-  _wallJumpHorizontalForce: 6
+  _verticalWallClimbHeight: 4
+  _wallRunCameraAngle: 10
+  _dashVelocity: 15
+  _upwardsDashVelocity: 0.2
+  _dashSpeedMultiplier: 10
+  _jumpHeight: 2.2
+  _wallJumpHeight: 2.5
+  _wallJumpHorizontalForce: 12
   _jumpCount: 2
   _gravity: -10
-  _gravityDropMultiplier: 1.5
+  _gravityDropMultiplier: 2.5
   _coyoteTime: 0.1
-  _jumpBuffer: 0.1
+  _jumpBuffer: 0.15
   _momentumFalloffTime: 0.3
-  _airResistance: 0.1
-  _airControlFactor: 0.3
-  _backwardsAirControlFactor: 0.3
+  _airControlFactor: 0.8
+  _backwardsAirControlFactor: 0.8
   _maxFuel: 100
   _fuelConsumptionRate: 0.1
   _fuelRegenerationRate: 0.1
