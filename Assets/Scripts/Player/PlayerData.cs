@@ -24,7 +24,7 @@ public class PlayerData : ScriptableObject
     [Header("Dash")]
     [SerializeField] private float _dashVelocity = 5f;
     [SerializeField] private float _upwardsDashVelocity = 1f;
-    [SerializeField, Range(-1,1)] private float _dashSpeedMultiplier = 0f;
+    [SerializeField] private float _dashSpeedMultiplier = 0f;
 
     [Header("Jump")]
     [SerializeField] private float _jumpHeight = 1.5f;
@@ -79,6 +79,7 @@ public class PlayerData : ScriptableObject
     public float WallJumpHeight => _wallJumpHeight;
     public float WallJumpHorizontalForce => _wallJumpHorizontalForce;
     public int JumpCount => _jumpCount;
+
     public float Gravity => _gravity;
     public float GravityDropMultiplier => _gravityDropMultiplier;
 
