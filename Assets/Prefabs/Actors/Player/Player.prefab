@@ -130,6 +130,22 @@ MonoBehaviour:
   playerData: {fileID: 11400000, guid: c5605296fe0950c498040b3aaa9823f7, type: 2}
   player: {fileID: 8179168282084677362}
   _initialState: Idle
+  _stateEvent: {fileID: 0}
+  OnStateChange:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 26b3c72e745252640bdc9599ab32cf3c, type: 2}
+        m_TargetAssemblyTypeName: GameEvents.GameEventAsset`1[[E_PlayerStates, Assembly-CSharp
+        m_MethodName: Invoke
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7355671032158614644
 GameObject:
   m_ObjectHideFlags: 0
@@ -218,7 +234,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerData: {fileID: 11400000, guid: c5605296fe0950c498040b3aaa9823f7, type: 2}
   _controller: {fileID: 1126209350573050912}
-  rotation: {fileID: 0}
+  _rotation: {fileID: 0}
   _camera: {fileID: 4739456406028981430, guid: 67174d1f7746377409163145e66307f7, type: 3}
   _hud: {fileID: 8360789365075529301, guid: e90e0e2ec089626468520ca255a13750, type: 3}
   Velocity: {x: 0, y: 0, z: 0}
@@ -226,6 +242,7 @@ MonoBehaviour:
   CurrentDashCount: 1
   CurrentFuel: 0
   WallRunSpeed: 0
+  TargetCameraTilt: 0
   CurrentState: 0
 --- !u!143 &1126209350573050912
 CharacterController:

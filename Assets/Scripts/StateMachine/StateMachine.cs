@@ -1,7 +1,9 @@
+using GameEvents;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Netcode;
+using UnityEngine.Events;
 using UnityEngine;
 
 public class StateMachine : NetworkBehaviour
@@ -9,7 +11,10 @@ public class StateMachine : NetworkBehaviour
     [SerializeField] private PlayerData playerData;
     [SerializeField] private PlayerController player;
     [SerializeField] private string _initialState;
+    [SerializeField] private E_PlayerStatesEventAsset _stateEvent;
     private State _currentState;
+
+    public UnityEvent<E_PlayerStates> OnStateChange;
 
     public override void OnNetworkSpawn()
     {
@@ -39,6 +44,9 @@ public class StateMachine : NetworkBehaviour
             SetupState(state);
         }
         _currentState.Enter(exitMessage); //Enter the Next State
+
+        OnStateChange.Invoke(player.CurrentState);
+
     }
 
     private void SetupState(State state) //Pass Data into State
