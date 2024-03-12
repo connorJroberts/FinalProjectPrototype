@@ -78,7 +78,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8004953335037687676}
   m_Layer: 0
-  m_Name: Global Light Settings Dawn
+  m_Name: lighting_dawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
