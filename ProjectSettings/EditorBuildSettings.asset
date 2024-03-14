@@ -17,5 +17,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CheviGym.unity
     guid: 6ff82012165c6e045858dd146bf71b15
+  - enabled: 1
+    path: Assets/Scenes/TrexGym1.unity
+    guid: 903651a254cce4845921dac558272b65
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

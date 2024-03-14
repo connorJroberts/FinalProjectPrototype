@@ -220,7 +220,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2771381682295370138}
   m_Layer: 0
-  m_Name: Standard Entrance
+  m_Name: StandardEntrance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
